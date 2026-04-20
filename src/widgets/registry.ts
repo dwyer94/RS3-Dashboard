@@ -1,4 +1,7 @@
 import type { FC } from 'react'
+import VoiceOfSeren      from './VoiceOfSeren'
+import TravellingMerchant from './TravellingMerchant'
+import RS3News            from './RS3News'
 
 export interface WidgetDefinition {
   id:          string
@@ -10,7 +13,7 @@ export interface WidgetDefinition {
   phase:       number
 }
 
-// Phase 2–6 widget components — placeholder until each phase is built
+// Phase 3–6 widget components — placeholder until each phase is built
 const Placeholder: FC = () => null
 
 export const widgetRegistry: WidgetDefinition[] = [
@@ -19,7 +22,7 @@ export const widgetRegistry: WidgetDefinition[] = [
     id:          'voice-of-seren',
     name:        'Voice of Seren',
     description: 'Current active VoS districts with hourly countdown.',
-    component:   Placeholder,
+    component:   VoiceOfSeren,
     defaultSize: { w: 3, h: 3 },
     minSize:     { w: 2, h: 2 },
     phase:       2,
@@ -28,7 +31,7 @@ export const widgetRegistry: WidgetDefinition[] = [
     id:          'travelling-merchant',
     name:        "Travelling Merchant",
     description: "Today's and tomorrow's Travelling Merchant stock.",
-    component:   Placeholder,
+    component:   TravellingMerchant,
     defaultSize: { w: 3, h: 4 },
     minSize:     { w: 2, h: 3 },
     phase:       2,
@@ -37,7 +40,7 @@ export const widgetRegistry: WidgetDefinition[] = [
     id:          'rs3-news',
     name:        'RS3 News',
     description: 'Latest RS3 patch notes and news updates.',
-    component:   Placeholder,
+    component:   RS3News,
     defaultSize: { w: 6, h: 4 },
     minSize:     { w: 4, h: 3 },
     phase:       2,
