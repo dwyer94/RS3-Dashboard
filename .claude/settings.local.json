@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pandoc --track-changes=all \"RS3-Dashboard-Architecture-Spec.docx\" -o spec_output.md)",
+      "Bash(python -c ' *)",
+      "Bash(python \"C:/Users/dwyer/AppData/Roaming/Claude/local-agent-mode-sessions/skills-plugin/18bb170b-9726-479c-9d17-d142148dd6ac/7cfcae9b-3f3b-42b6-b9bf-1efaa01abb04/skills/docx/scripts/office/unpack.py\" \"RS3-Dashboard-Architecture-Spec.docx\" unpacked/)",
+      "Bash(npm --version)",
+      "Bash(npm create *)",
+      "Bash(npx create-vite@latest . --template react-ts)",
+      "Bash(npx create-vite@latest _scaffold --template react-ts)",
+      "Bash(cp -r _scaffold/. .)",
+      "Bash(rm -rf _scaffold)",
+      "Read(//c/c/Users/dwyer/PythonProjects/**)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(node -e \"const rgl = require\\('./node_modules/react-grid-layout'\\); console.log\\(Object.keys\\(rgl\\)\\)\")",
+      "Bash(grep -v \"^.*//.*$\")",
+      "Bash(npm uninstall *)",
+      "Bash(npm test *)"
+    ]
+  }
+}

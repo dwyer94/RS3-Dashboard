@@ -1,0 +1,60 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git:*)",
+      "Bash(npm run dev)",
+      "Bash(npm run build)",
+      "Bash(npm install)",
+      "Bash(uvicorn:*)",
+      "Bash(pip install:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Write(.env)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(jq -r '.tool_input.file_path // empty' 2>/dev/null); [[ \"$FILE\" == *.py ]] && black \"$FILE\" 2>/dev/null || true",
+            "async": true,
+            "statusMessage": "Formatting Python..."
+          },
+          {
+            "type": "command",
+            "command": "FILE=$(jq -r '.tool_input.file_path // empty' 2>/dev/null); [[ \"$FILE\" == *.py ]] && ruff check \"$FILE\" 2>/dev/null || true",
+            "async": true,
+            "statusMessage": "Linting Python..."
+          },
+          {
+            "type": "command",
+            "command": "FILE=$(jq -r '.tool_input.file_path // empty' 2>/dev/null); [[ \"$FILE\" =~ \\.(js|jsx|ts|tsx)$ ]] && { P=\"$CLAUDE_PROJECT_DIR/frontend/node_modules/.bin/prettier\"; [ -x \"$P\" ] && \"$P\" --write \"$FILE\" 2>/dev/null; } || true",
+            "async": true,
+            "statusMessage": "Formatting JS..."
+          },
+          {
+            "type": "command",
+            "command": "FILE=$(jq -r '.tool_input.file_path // empty' 2>/dev/null); [[ \"$FILE\" =~ \\.(js|jsx|ts|tsx)$ ]] && { E=\"$CLAUDE_PROJECT_DIR/frontend/node_modules/.bin/eslint\"; [ -x \"$E\" ] && \"$E\" \"$FILE\" 2>/dev/null; } || true",
+            "async": true,
+            "statusMessage": "Linting JS..."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+          }
+        ]
+      }
+    ]
+  },
+  "env": {
+    "CLAUDE_NOTIFY_ON_STOP": "1"
+  }
+}
