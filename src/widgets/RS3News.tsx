@@ -2,15 +2,11 @@ import WidgetShell from '../components/WidgetShell'
 import { useRS3News } from '../hooks/useRS3News'
 import type { NewsItem } from '../api/types'
 
-const CATEGORY_COLOR: Record<string, string> = {
-  'Game Update':   'var(--teal)',
-  'Patch Notes':   'var(--text-secondary)',
-  'Announcements': 'var(--gold)',
-  'Promotions':    'var(--green)',
-}
-
 function NewsRow({ item }: { item: NewsItem }) {
-  const catColor = CATEGORY_COLOR[item.category] ?? 'var(--text-muted)'
+  const date = new Date(item.date).toLocaleDateString(undefined, {
+    day: 'numeric', month: 'short', year: 'numeric',
+  })
+
   return (
     <a
       href={item.url}
@@ -23,24 +19,19 @@ function NewsRow({ item }: { item: NewsItem }) {
         textDecoration: 'none',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3 }}>
-        <span style={{
-          fontFamily:    'var(--font-body)',
-          fontSize:      9,
-          color:         catColor,
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          fontWeight:    500,
-        }}>
-          {item.category}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 3 }}>
+        <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--text-primary)', lineHeight: 1.4, paddingRight: 12 }}>
+          {item.title}
         </span>
-        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--text-muted)', marginLeft: 'auto' }}>
-          {item.date}
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--text-muted)', flexShrink: 0 }}>
+          {date}
         </span>
       </div>
-      <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--text-primary)', lineHeight: 1.4 }}>
-        {item.title}
-      </div>
+      {item.excerpt && (
+        <div style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'var(--text-secondary)', lineHeight: 1.4 }}>
+          {item.excerpt}
+        </div>
+      )}
     </a>
   )
 }

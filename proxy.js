@@ -7,6 +7,7 @@ const ALLOWED_DOMAINS = [
   'apps.runescape.com',
   'secure.runescape.com',
   'services.runescape.com',
+  'www.reddit.com',
 ]
 
 const PORT = 8787
@@ -40,7 +41,7 @@ app.get('/', async (req, res) => {
   }
 
   try {
-    const upstream = await fetch(target)
+    const upstream = await fetch(target, { headers: { 'User-Agent': 'RS3Dashboard/1.0' } })
     const body     = await upstream.text()
     res.status(upstream.status)
     const ct = upstream.headers.get('content-type')

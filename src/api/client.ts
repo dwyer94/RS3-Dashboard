@@ -1,14 +1,15 @@
 import config from '../config'
 import { ApiError } from './types'
 
-const JAGEX_DOMAINS = [
+const PROXY_DOMAINS = [
   'apps.runescape.com',
   'secure.runescape.com',
   'services.runescape.com',
+  'www.reddit.com',
 ]
 
 export function proxyUrl(url: string): string {
-  return JAGEX_DOMAINS.some(d => url.includes(d))
+  return PROXY_DOMAINS.some(d => url.includes(d))
     ? `${config.proxyUrl}?target=${encodeURIComponent(url)}`
     : url
 }

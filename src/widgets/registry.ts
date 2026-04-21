@@ -1,7 +1,6 @@
 import type { FC } from 'react'
-import VoiceOfSeren      from './VoiceOfSeren'
-import TravellingMerchant from './TravellingMerchant'
-import RS3News            from './RS3News'
+import VoiceOfSeren from './VoiceOfSeren'
+import RS3News      from './RS3News'
 
 export interface WidgetDefinition {
   id:          string
@@ -25,15 +24,6 @@ export const widgetRegistry: WidgetDefinition[] = [
     component:   VoiceOfSeren,
     defaultSize: { w: 3, h: 3 },
     minSize:     { w: 2, h: 2 },
-    phase:       2,
-  },
-  {
-    id:          'travelling-merchant',
-    name:        "Travelling Merchant",
-    description: "Today's and tomorrow's Travelling Merchant stock.",
-    component:   TravellingMerchant,
-    defaultSize: { w: 3, h: 4 },
-    minSize:     { w: 2, h: 3 },
     phase:       2,
   },
   {

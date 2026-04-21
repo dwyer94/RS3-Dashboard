@@ -1,101 +1,62 @@
 import { apiFetch } from './client'
-import type { VoSData, VoSHistoryEntry, TMSData, TMSItem, NewsItem } from './types'
+import type { VoSData, VoSHistoryEntry, NewsItem } from './types'
 
-const WEIRD_GLOOP = 'https://api.weirdgloop.org'
+const WEIRD_GLOOP   = 'https://api.weirdgloop.org'
+const REDDIT_BASE   = 'https://www.reddit.com'
 const HISCORES_BASE = 'https://secure.runescape.com/m=hiscore'
 
 // ── Voice of Seren ───────────────────────────────────────────────────────────
 
 interface RawVoS {
-  district_1: string
-  district_2: string
-  timestamp:  string
+  district1: string
+  district2: string
+  timestamp: string
+  source:    string
 }
 
 export async function fetchVoS(): Promise<VoSData> {
-  const raw = await apiFetch<RawVoS>(`${WEIRD_GLOOP}/runescape/vos/current`)
+  const raw = await apiFetch<RawVoS>(`${WEIRD_GLOOP}/runescape/vos`)
   return {
-    districts:   [raw.district_1, raw.district_2],
-    nextRotation: new Date(raw.timestamp),
+    districts:    [raw.district1, raw.district2],
+    nextRotation: new Date(new Date(raw.timestamp).getTime() + 3_600_000),
   }
 }
 
 interface RawVoSHistory {
-  data: Array<{ district_1: string; district_2: string; timestamp: string }>
+  data: Array<{ district1: string; district2: string; timestamp: string }>
 }
 
 export async function fetchVoSHistory(): Promise<VoSHistoryEntry[]> {
-  const raw = await apiFetch<RawVoSHistory>(`${WEIRD_GLOOP}/runescape/vos`)
+  const raw = await apiFetch<RawVoSHistory>(`${WEIRD_GLOOP}/runescape/vos/history`)
   return raw.data.map(entry => ({
     hour:      entry.timestamp,
-    districts: [entry.district_1, entry.district_2],
+    districts: [entry.district1, entry.district2],
   }))
 }
 
-// ── Travelling Merchant's Shop ────────────────────────────────────────────────
+// ── RS3 News (r/runescape "News & Announcements" flair) ──────────────────────
 
-interface RawTMSItem {
-  name:   string
-  url:    string
-  noted?: boolean
+interface RedditPost {
+  title:           string
+  selftext:        string
+  permalink:       string
+  created_utc:     number
 }
 
-interface RawTMS {
-  today:     RawTMSItem[]
-  tomorrow?: RawTMSItem[]
-  date:      string
+interface RedditListing {
+  data: { children: Array<{ data: RedditPost }> }
 }
 
-const HIGH_VALUE_ITEMS = new Set([
-  "Barrel of brine",
-  "Deathtouched dart",
-  "Dungeoneering wildcard",
-  "Harmonic dust",
-  "Silverhawk down",
-])
-
-function mapTMSItem(raw: RawTMSItem): TMSItem {
-  return {
-    name:        raw.name,
-    wikiUrl:     raw.url,
-    isHighValue: HIGH_VALUE_ITEMS.has(raw.name),
-  }
-}
-
-export async function fetchTMS(): Promise<TMSData> {
-  const raw = await apiFetch<RawTMS>(`${WEIRD_GLOOP}/runescape/tms/current`)
-
-  const resetDate = new Date(raw.date)
-  resetDate.setUTCDate(resetDate.getUTCDate() + 1)
-  resetDate.setUTCHours(0, 0, 0, 0)
-
-  return {
-    today:     raw.today.map(mapTMSItem),
-    tomorrow:  (raw.tomorrow ?? []).map(mapTMSItem),
-    resetTime: resetDate,
-  }
-}
-
-// ── RS3 News ─────────────────────────────────────────────────────────────────
-
-interface RawNewsItem {
-  title:    string
-  date:     string
-  category: string
-  link:     string
-}
-
-interface RawNewsResponse {
-  data: RawNewsItem[]
-}
+const NEWS_URL = `${REDDIT_BASE}/r/runescape/search.json` +
+  `?q=flair%3ANews&sort=new&restrict_sr=on&limit=15`
 
 export async function fetchRS3News(): Promise<NewsItem[]> {
-  const raw = await apiFetch<RawNewsResponse>(`${WEIRD_GLOOP}/runescape/social/posts`)
-  return raw.data.map(item => ({
-    title:    item.title,
-    date:     item.date,
-    category: item.category,
-    url:      item.link,
+  const raw = await apiFetch<RedditListing>(NEWS_URL)
+  return raw.data.children.map(({ data: post }) => ({
+    title:   post.title,
+    date:    new Date(post.created_utc * 1000).toISOString(),
+    excerpt: post.selftext.trim().slice(0, 200),
+    url:     `${REDDIT_BASE}${post.permalink}`,
   }))
 }
 

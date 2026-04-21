@@ -5,6 +5,7 @@ const ALLOWED_DOMAINS = [
   'apps.runescape.com',
   'secure.runescape.com',
   'services.runescape.com',
+  'www.reddit.com',
 ]
 
 function corsHeaders(): HeadersInit {

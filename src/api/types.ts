@@ -70,23 +70,12 @@ export interface VoSHistoryEntry {
   districts: [string, string]
 }
 
-export interface TMSItem {
-  name:        string
-  wikiUrl:     string
-  isHighValue: boolean
-}
-
-export interface TMSData {
-  today:     TMSItem[]
-  tomorrow:  TMSItem[]
-  resetTime: Date
-}
 
 export interface NewsItem {
-  title:    string
-  date:     string
-  category: string
-  url:      string
+  title:   string
+  date:    string
+  excerpt: string
+  url:     string
 }
 
 // ── API Errors ───────────────────────────────────────────────────────────────
