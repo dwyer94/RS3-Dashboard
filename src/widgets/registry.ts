@@ -1,6 +1,9 @@
 import type { FC } from 'react'
-import VoiceOfSeren from './VoiceOfSeren'
-import RS3News      from './RS3News'
+import VoiceOfSeren        from './VoiceOfSeren'
+import RS3News             from './RS3News'
+import PlayerSkillSnapshot from './PlayerSkillSnapshot'
+import ActivityFeed        from './ActivityFeed'
+import SkillGoalTracker    from './SkillGoalTracker'
 
 export interface WidgetDefinition {
   id:          string
@@ -41,7 +44,7 @@ export const widgetRegistry: WidgetDefinition[] = [
     id:          'player-skill-snapshot',
     name:        'Skill Snapshot',
     description: 'All skill levels and XP for a tracked player.',
-    component:   Placeholder,
+    component:   PlayerSkillSnapshot,
     defaultSize: { w: 6, h: 4 },
     minSize:     { w: 4, h: 3 },
     phase:       3,
@@ -50,7 +53,7 @@ export const widgetRegistry: WidgetDefinition[] = [
     id:          'activity-feed',
     name:        'Activity Feed',
     description: 'Recent in-game activities for a tracked player.',
-    component:   Placeholder,
+    component:   ActivityFeed,
     defaultSize: { w: 4, h: 4 },
     minSize:     { w: 3, h: 3 },
     phase:       3,
@@ -59,7 +62,7 @@ export const widgetRegistry: WidgetDefinition[] = [
     id:          'skill-goal-tracker',
     name:        'Skill Goal Tracker',
     description: 'Track XP progress toward a target level.',
-    component:   Placeholder,
+    component:   SkillGoalTracker,
     defaultSize: { w: 4, h: 3 },
     minSize:     { w: 3, h: 2 },
     phase:       3,
