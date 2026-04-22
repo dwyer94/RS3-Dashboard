@@ -7,7 +7,6 @@ const GE_GRAPH_BASE = 'https://services.runescape.com/m=itemdb_rs/api/graph'
 interface RawDumpEntry {
   id:     number
   name:   string
-  icon:   string
   limit:  number
   price:  number
   last:   number
@@ -22,7 +21,6 @@ export async function fetchGEDump(): Promise<GEItem[]> {
   return Object.values(raw).map(entry => ({
     id:       entry.id,
     name:     entry.name,
-    icon:     entry.icon,
     buyLimit: entry.limit,
     price:    entry.price,
     last:     entry.last,

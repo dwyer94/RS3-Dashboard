@@ -128,7 +128,7 @@ All hooks are defined upfront. Widget developers import from this catalogue only
 | **Hook**                     | **Query Key**                     | **staleTime / refetchInterval** | **Notes**                                                                                      |
 | ---------------------------- | --------------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------- |
 | **usePlayerProfile(rsn)**    | `['player','profile',rsn]`        | 5 min / manual                  | Disabled when rsn empty. Returns SkillData[], totalXP, totalLevel, activityLog, combatLevel.   |
-| **useXPMonthly(rsn, skill?)** | `['player','xpmonthly',rsn,skill]` | 1 hour / manual                | Returns 12-month XP array per skill. Skill optional — all skills if omitted.                   |
+| **useXPMonthly(rsn, skill?)** | `['player','xpmonthly',rsn,skill]` | 1 hour / manual                | Returns 12-month XP array per skill. Skill optional — omitting returns skillId=-1 (total all skills). Endpoint: `/runemetrics/xp-monthly?searchName=RSN&skillid=N`. |
 | **useAllTrackedProfiles()**  | `['player','profile',rsn]` per RSN | 5 min / manual                 | Calls usePlayerProfile for each RSN in playerStore. Staggered 200ms on first load.             |
 
 **Grand Exchange Hooks**
@@ -363,11 +363,12 @@ interface XPMonthlyData { skill: number; months: MonthlyXP[] }
 interface GEItem {
   id:       number
   name:     string
-  icon:     string    // filename from dump (e.g. "'Ancient gizmos' blueprint.png")
   buyLimit: number    // mapped from dump's "limit" field
   price:    number    // current guide price
   last:     number    // last traded price
   volume:   number    // daily trade volume
+  // NOTE: icon is NOT present in rs_dump.json — Phase 5 must fetch from RS Wiki
+  //       using item name: https://runescape.wiki/images/{name}.png (URL-encoded)
 }
 
 interface GESignals {
@@ -519,4 +520,4 @@ Phases are sequenced to complete the service layer before widget development beg
 
 ---
 
-_RS3 Dashboard · Architecture Spec v2.1 · Strongpoint Labs_
+_RS3 Dashboard · Architecture Spec v2.1

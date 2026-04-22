@@ -48,7 +48,7 @@ Based on your architecture specification and current progress, here is the `PHAS
 ## 🛠 Phase 4 & 5: Social & Market (Planned)
 *Objective: Implement complex data visualizations and market signal logic.*
 
-- [ ] **Social (Phase 4):** XP Heatmaps and friend comparison using staggered prefetching (200ms delay).
+- [x] **Social (Phase 4):** XP Heatmaps and friend comparison using staggered prefetching (200ms delay).
 - [ ] **Market (Phase 5):** `MarketWatchlist` and `MarketMovers` using normalized GE dump data.
 - [ ] **GE Signals:** Pure utility functions for Z-score, percentile, and price streaks.
 

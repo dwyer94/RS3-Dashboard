@@ -4,6 +4,9 @@ import RS3News             from './RS3News'
 import PlayerSkillSnapshot from './PlayerSkillSnapshot'
 import ActivityFeed        from './ActivityFeed'
 import SkillGoalTracker    from './SkillGoalTracker'
+import XPHeatmap           from './XPHeatmap'
+import FriendComparison    from './FriendComparison'
+import ClanLeaderboard     from './ClanLeaderboard'
 
 export interface WidgetDefinition {
   id:          string
@@ -73,16 +76,16 @@ export const widgetRegistry: WidgetDefinition[] = [
     id:          'xp-heatmap',
     name:        'XP Heatmap',
     description: '12-month XP gain calendar heatmap.',
-    component:   Placeholder,
-    defaultSize: { w: 6, h: 5 },
-    minSize:     { w: 4, h: 4 },
+    component:   XPHeatmap,
+    defaultSize: { w: 8, h: 8 },
+    minSize:     { w: 6, h: 5 },
     phase:       4,
   },
   {
     id:          'friend-comparison',
     name:        'Friend Comparison',
     description: 'Side-by-side skill comparison across tracked players.',
-    component:   Placeholder,
+    component:   FriendComparison,
     defaultSize: { w: 6, h: 4 },
     minSize:     { w: 4, h: 3 },
     phase:       4,
@@ -91,7 +94,7 @@ export const widgetRegistry: WidgetDefinition[] = [
     id:          'clan-leaderboard',
     name:        'Clan Leaderboard',
     description: 'Skill-based leaderboard for all tracked players.',
-    component:   Placeholder,
+    component:   ClanLeaderboard,
     defaultSize: { w: 6, h: 5 },
     minSize:     { w: 4, h: 4 },
     phase:       4,

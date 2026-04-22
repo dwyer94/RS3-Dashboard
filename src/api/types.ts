@@ -39,11 +39,11 @@ export interface XPMonthlyData {
 export interface GEItem {
   id:       number
   name:     string
-  icon:     string
   buyLimit: number
   price:    number
   last:     number
   volume:   number
+  // icon is not in the rs_dump — Phase 5 must source from RS Wiki by item name
 }
 
 export interface GESignals {

@@ -16,7 +16,28 @@
       "Bash(node -e \"const rgl = require\\('./node_modules/react-grid-layout'\\); console.log\\(Object.keys\\(rgl\\)\\)\")",
       "Bash(grep -v \"^.*//.*$\")",
       "Bash(npm uninstall *)",
-      "Bash(npm test *)"
+      "Bash(npm test *)",
+      "Skill(commit-commands:commit)",
+      "Skill(commit-commands:commit:*)",
+      "WebFetch(domain:api.weirdgloop.org)",
+      "WebFetch(domain:www.reddit.com)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://www.reddit.com/r/runescape/search.json?q=flair%3A%22News+%26+Announcements%22&sort=new&restrict_sr=on&limit=3\" -H \"User-Agent: rs3dashboard/0.1 \\(personal project\\)\")",
+      "Bash(curl -s \"https://www.reddit.com/r/runescape/search.json?q=flair%3A%22News+%26+Announcements%22&sort=new&restrict_sr=on&limit=3\" -H \"User-Agent: rs3dashboard/0.1 \\(personal project\\)\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(p['data']['title'], '|', p['data']['created_utc'], '|', p['data']['permalink'][:60]\\) for p in d['data']['children']]\")",
+      "Bash(curl -s \"https://www.reddit.com/r/runescape/new.json?limit=25\" -H \"User-Agent: rs3dashboard/0.1\")",
+      "Bash(curl -s \"https://www.reddit.com/r/runescape/search.json?q=flair%3ANews&sort=new&restrict_sr=on&limit=5\" -H \"User-Agent: rs3dashboard/0.1\")",
+      "Bash(curl -s \"https://www.reddit.com/r/runescape/search.json?q=flair%3ANews&sort=new&restrict_sr=on&limit=10\" -H \"User-Agent: rs3dashboard/0.1\")",
+      "Bash(curl -s \"http://localhost:8787/?target=https%3A%2F%2Fwww.reddit.com%2Fr%2Frunescape%2Fsearch.json%3Fq%3Dflair%253ANews%26sort%3Dnew%26restrict_sr%3Don%26limit%3D3\")",
+      "Bash(python -c \" import sys, json d = json.load\\(sys.stdin\\) children = d['data']['children'] print\\('Posts returned:', len\\(children\\)\\) for c in children: p = c['data'] print\\('-', p.get\\('link_flair_text'\\), '|', p['title'].encode\\('ascii','replace'\\).decode\\(\\)[:60]\\) \" kill %1)",
+      "Bash(npx tsc *)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(curl -s \"http://localhost:8787?target=https://apps.runescape.com/runemetrics/profile/profile?user=test\" -o /dev/null -w \"%{http_code}\")",
+      "WebSearch",
+      "WebFetch(domain:runescape.wiki)",
+      "WebFetch(domain:astrect.gitbook.io)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:crystalmathlabs.com)",
+      "Bash(git add *)"
     ]
   }
 }

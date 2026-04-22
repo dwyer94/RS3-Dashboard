@@ -17,7 +17,7 @@
 ## Testing & TDD
 - **TDD Enforcement:** Always write a failing test in `tests/` before implementing new logic in `api/`, `utils/`, or `stores/`.
 - **Test Focus:** Test pure utility functions and store state transitions. 
-- **Component Strategy:** Do not test React hooks or widgets; keep them thin by moving complex logic into testable `utils`.
+- **Component Strategy:**  Reasonable to skip snapshot tests and pure render tests, but widget behavior tests (loading states, conditional sections like TMS "tomorrow" only showing when data exists, countdown ticking) have real value. The hooks are similarly worth testing at the integration level with a real QueryClient rather than mocking everything.
 - **Mocking:** Mock `Date.now()` for all UTC/reset tests.
 
 ## Critical Constraints

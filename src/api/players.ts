@@ -72,31 +72,36 @@ export async function fetchPlayerProfile(rsn: string): Promise<PlayerProfile> {
   }
 }
 
-interface RawXPResponse {
-  month:  Array<{ date: string; skill: number; xp: number }>
-  error?: string
+interface RawXPMonthlyEntry {
+  skillId:       number
+  totalXp:       number
+  averageXpGain: number
+  totalGain:     number
+  monthData:     Array<{ xpGain: number; timestamp: number; rank: number }>
+}
+
+interface RawXPMonthlyResponse {
+  monthlyXpGain: RawXPMonthlyEntry[]
 }
 
 export async function fetchXPMonthly(rsn: string, skill?: number): Promise<XPMonthlyData[]> {
-  const params = new URLSearchParams({ user: rsn, type: 'monthly' })
-  if (skill !== undefined) params.set('skill', String(skill))
+  const params = new URLSearchParams({ searchName: rsn })
+  if (skill !== undefined) params.set('skillid', String(skill))
 
-  const url = `${BASE}/xp?${params}`
-  const raw = await apiFetch<RawXPResponse>(url)
+  const url = `${BASE}/xp-monthly?${params}`
+  const raw = await apiFetch<RawXPMonthlyResponse>(url)
 
-  if (raw.error) throw new ApiError('XP data unavailable', 400)
+  if (!raw.monthlyXpGain?.length) throw new ApiError('XP data unavailable', 400)
 
-  const bySkill = new Map<number, Array<{ year: number; month: number; xpGained: number }>>()
-
-  for (const entry of raw.month) {
-    const d = new Date(entry.date)
-    const list = bySkill.get(entry.skill) ?? []
-    list.push({ year: d.getUTCFullYear(), month: d.getUTCMonth() + 1, xpGained: entry.xp })
-    bySkill.set(entry.skill, list)
-  }
-
-  return Array.from(bySkill.entries()).map(([skillId, months]) => ({
-    skill: skillId,
-    months,
+  return raw.monthlyXpGain.map(entry => ({
+    skill:  entry.skillId,
+    months: entry.monthData.map(m => {
+      const d = new Date(m.timestamp)
+      return {
+        year:     d.getUTCFullYear(),
+        month:    d.getUTCMonth() + 1,
+        xpGained: m.xpGain,
+      }
+    }),
   }))
 }
