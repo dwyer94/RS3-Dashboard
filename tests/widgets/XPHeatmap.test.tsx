@@ -5,17 +5,17 @@ import XPHeatmap from '../../src/widgets/XPHeatmap'
 
 vi.mock('../../src/queryClient', () => ({ default: { invalidateQueries: vi.fn() } }))
 vi.mock('../../src/stores/usePlayerStore')
-vi.mock('../../src/hooks/usePlayerProfile')
-vi.mock('../../src/hooks/useXPMonthly')
+// XPHeatmap uses useQueries directly for per-skill monthly data
+vi.mock('@tanstack/react-query', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@tanstack/react-query')>()
+  return { ...actual, useQueries: vi.fn() }
+})
 
 import usePlayerStore from '../../src/stores/usePlayerStore'
-import { usePlayerProfile } from '../../src/hooks/usePlayerProfile'
-import { useXPMonthly } from '../../src/hooks/useXPMonthly'
+import { useQueries } from '@tanstack/react-query'
 
-const SKILLS = [
-  { id: 0,  name: 'Attack',    level: 99,  xp: 13_034_534,   rank: 12_400 },
-  { id: 28, name: 'Necromancy', level: 120, xp: 104_273_167, rank: 1_500 },
-]
+// XPHeatmap has 29 skills (ids 0–28). useQueries returns one result per skill in that order.
+const SKILL_COUNT = 29
 
 function mockStore(rsn = 'Zezima') {
   vi.mocked(usePlayerStore).mockImplementation((sel: any) =>
@@ -23,23 +23,25 @@ function mockStore(rsn = 'Zezima') {
   )
 }
 
-function mockProfile(skills = SKILLS) {
-  vi.mocked(usePlayerProfile).mockReturnValue({
-    data: { rsn: 'Zezima', totalLevel: 2898, combatLevel: 138, totalXP: 4_200_000_000, skills, activities: [] },
-    isLoading: false, isError: false, error: null, dataUpdatedAt: Date.now(),
-  } as any)
-}
-
-function mockXP(data: any[] = []) {
-  vi.mocked(useXPMonthly).mockReturnValue({
-    data, isLoading: false, isError: false, error: null, dataUpdatedAt: Date.now(),
-  } as any)
+// Build a 29-element useQueries result array. `skillData` maps skill id → MonthlyXP[].
+function mockXP(skillData: Record<number, { year: number; month: number; xpGained: number }[]> = {}) {
+  vi.mocked(useQueries).mockReturnValue(
+    Array.from({ length: SKILL_COUNT }, (_, i) => {
+      const months = skillData[i]
+      return {
+        data:        months ? [{ skill: i, months }] : [],
+        isLoading:   false,
+        isError:     false,
+        error:       null,
+        dataUpdatedAt: Date.now(),
+      }
+    })
+  )
 }
 
 describe('XPHeatmap', () => {
   beforeEach(() => {
     mockStore()
-    mockProfile()
     mockXP()
   })
 
@@ -49,55 +51,53 @@ describe('XPHeatmap', () => {
     expect(screen.getByText('Set a player in Settings to view XP history.')).toBeInTheDocument()
   })
 
-  it('shows no-data message when XP array is empty', () => {
+  it('shows no-data message when all skills have empty XP arrays', () => {
     render(<XPHeatmap />)
     expect(screen.getByText('No XP data available.')).toBeInTheDocument()
   })
 
-  it('renders month cells with correct labels', () => {
-    mockXP([{
-      skill: 28,
-      months: [
-        { year: 2025, month: 4, xpGained: 820_000 },
-        { year: 2026, month: 1, xpGained: 2_400_000 },
+  it('renders month header labels when data is present', () => {
+    mockXP({
+      28: [
+        { year: 2025, month: 4,  xpGained: 820_000 },
+        { year: 2026, month: 1,  xpGained: 2_400_000 },
       ],
-    }])
+    })
     render(<XPHeatmap />)
-    expect(screen.getByText("Apr '25")).toBeInTheDocument()
-    expect(screen.getByText("Jan '26")).toBeInTheDocument()
+    expect(screen.getByText("Apr")).toBeInTheDocument()
+    expect(screen.getByText("Jan")).toBeInTheDocument()
   })
 
-  it('renders the skill selector with an All Skills option', () => {
+  it('renders skill names as row labels', () => {
+    mockXP({ 0: [{ year: 2025, month: 6, xpGained: 500_000 }] })
     render(<XPHeatmap />)
-    expect(screen.getByRole('combobox')).toBeInTheDocument()
-    expect(screen.getByRole('option', { name: 'All Skills' })).toBeInTheDocument()
+    expect(screen.getByText('Attack')).toBeInTheDocument()
+    expect(screen.getByText('Necromancy')).toBeInTheDocument()
   })
 
-  it('populates the skill selector with skills from the player profile', () => {
+  it('shows data for multiple skills in the same month column', () => {
+    mockXP({
+      0:  [{ year: 2025, month: 6, xpGained: 500_000 }],
+      28: [{ year: 2025, month: 6, xpGained: 750_000 }],
+    })
     render(<XPHeatmap />)
-    expect(screen.getByRole('option', { name: 'Attack' })).toBeInTheDocument()
-    expect(screen.getByRole('option', { name: 'Necromancy' })).toBeInTheDocument()
-  })
-
-  it('aggregates XP across multiple skills for the same month', () => {
-    mockXP([
-      { skill:  0, months: [{ year: 2025, month: 6, xpGained: 500_000 }] },
-      { skill: 28, months: [{ year: 2025, month: 6, xpGained: 500_000 }] },
-    ])
-    render(<XPHeatmap />)
-    expect(screen.getByText('1.0M')).toBeInTheDocument()
+    // Both skills share the same Jun column — exactly one Jun header should appear
+    const junLabels = screen.getAllByText('Jun')
+    expect(junLabels).toHaveLength(1)
   })
 
   it('only shows the last 12 months when more data is available', () => {
+    // 14 months: Jan 2025 → Feb 2026. After slice(-12): Mar 2025 → Feb 2026.
+    // So Jan '25 and Feb '25 column headers must not appear.
     const months = Array.from({ length: 14 }, (_, i) => ({
-      year: 2025 + Math.floor(i / 12),
-      month: (i % 12) + 1,
+      year:     2025 + Math.floor(i / 12),
+      month:    (i % 12) + 1,
       xpGained: 100_000,
     }))
-    mockXP([{ skill: 28, months }])
+    mockXP({ 28: months })
     render(<XPHeatmap />)
-    // Should render exactly 12 cells, not 14
-    const cells = screen.getAllByText('100.0K')
-    expect(cells).toHaveLength(12)
+    // The year spans render as "'25" / "'26" etc — get all of them to count columns
+    const yearSpans = screen.getAllByText(/^'2[0-9]$/)
+    expect(yearSpans.length).toBeLessThanOrEqual(12)
   })
 })

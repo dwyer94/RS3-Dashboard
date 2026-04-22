@@ -7,6 +7,8 @@ import SkillGoalTracker    from './SkillGoalTracker'
 import XPHeatmap           from './XPHeatmap'
 import FriendComparison    from './FriendComparison'
 import ClanLeaderboard     from './ClanLeaderboard'
+import MarketWatchlist     from './MarketWatchlist'
+import MarketMovers        from './MarketMovers'
 
 export interface WidgetDefinition {
   id:          string
@@ -18,7 +20,7 @@ export interface WidgetDefinition {
   phase:       number
 }
 
-// Phase 3–6 widget components — placeholder until each phase is built
+// Phase 6 widget components — placeholder until built
 const Placeholder: FC = () => null
 
 export const widgetRegistry: WidgetDefinition[] = [
@@ -105,7 +107,7 @@ export const widgetRegistry: WidgetDefinition[] = [
     id:          'market-watchlist',
     name:        'Market Watchlist',
     description: 'Price and signal data for your GE watchlist.',
-    component:   Placeholder,
+    component:   MarketWatchlist,
     defaultSize: { w: 12, h: 5 },
     minSize:     { w: 6, h: 4 },
     phase:       5,
@@ -113,10 +115,10 @@ export const widgetRegistry: WidgetDefinition[] = [
   {
     id:          'market-movers',
     name:        'Market Movers',
-    description: 'Top GE items by Z-score momentum and volume.',
-    component:   Placeholder,
-    defaultSize: { w: 12, h: 5 },
-    minSize:     { w: 6, h: 4 },
+    description: 'Top GE items by price movement and trade volume.',
+    component:   MarketMovers,
+    defaultSize: { w: 8, h: 5 },
+    minSize:     { w: 5, h: 4 },
     phase:       5,
   },
 

@@ -166,7 +166,7 @@ export default function App() {
       {/* Footer */}
       <footer style={{ height: 28, borderTop: '1px solid var(--border-dim)', display: 'flex', alignItems: 'center', padding: '0 16px', flexShrink: 0 }}>
         <span style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--text-muted)', marginLeft: 'auto' }}>
-          v{config.appVersion} · Strongpoint Labs
+          v{config.appVersion}
         </span>
       </footer>
 
