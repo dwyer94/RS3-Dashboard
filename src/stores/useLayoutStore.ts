@@ -13,6 +13,7 @@ export interface WidgetLayout {
 interface LayoutStore {
   widgets:      WidgetLayout[]
   theme:        'light' | 'dark'
+  uiScale:      number
   _hasHydrated: boolean
 
   updateLayout: (layouts: WidgetLayout[]) => void
@@ -21,6 +22,7 @@ interface LayoutStore {
   removeWidget: (id: string) => void
   resetLayout:  () => void
   setTheme:     (theme: 'light' | 'dark') => void
+  setUiScale:   (scale: number) => void
   setHydrated:  () => void
 }
 
@@ -29,6 +31,7 @@ const useLayoutStore = create<LayoutStore>()(
     (set) => ({
       widgets:      [],
       theme:        'dark',
+      uiScale:      1,
       _hasHydrated: false,
 
       updateLayout: (layouts) => set({ widgets: layouts }),
@@ -51,17 +54,24 @@ const useLayoutStore = create<LayoutStore>()(
         set({ theme })
       },
 
+      setUiScale: (uiScale) => {
+        document.documentElement.style.zoom = String(uiScale)
+        set({ uiScale })
+      },
+
       setHydrated: () => set({ _hasHydrated: true }),
     }),
     {
       name:    'rs3dash.layout',
-      version: 1,
+      version: 2,
       migrate: (state, _version) => state,
       onRehydrateStorage: () => (state) => {
         state?.setHydrated()
-        // Reapply theme class on page load
         if (state?.theme === 'dark') {
           document.documentElement.classList.add('dark')
+        }
+        if (state?.uiScale && state.uiScale !== 1) {
+          document.documentElement.style.zoom = String(state.uiScale)
         }
       },
     },

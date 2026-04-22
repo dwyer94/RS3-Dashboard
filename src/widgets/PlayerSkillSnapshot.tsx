@@ -28,10 +28,8 @@ function SkillCell({ skill }: { skill: SkillData }) {
         fontSize:      8,
         color:         'var(--text-secondary)',
         textTransform: 'uppercase',
-        letterSpacing: '0.05em',
-        overflow:      'hidden',
-        textOverflow:  'ellipsis',
-        whiteSpace:    'nowrap',
+        letterSpacing: '0.04em',
+        lineHeight:    1.2,
       }}>
         {skill.name}
       </div>

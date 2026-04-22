@@ -50,12 +50,24 @@ interface RedditListing {
 const NEWS_URL = `${REDDIT_BASE}/r/runescape/search.json` +
   `?q=flair%3ANews&sort=new&restrict_sr=on&limit=15`
 
+function decodeHtmlEntities(str: string): string {
+  const doc = new DOMParser().parseFromString(str, 'text/html')
+  return doc.documentElement.textContent ?? str
+}
+
+function stripMarkdown(str: string): string {
+  return str
+    .replace(/\*\*(.*?)\*\*/g, '$1')
+    .replace(/\*(.*?)\*/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+}
+
 export async function fetchRS3News(): Promise<NewsItem[]> {
   const raw = await apiFetch<RedditListing>(NEWS_URL)
   return raw.data.children.map(({ data: post }) => ({
-    title:   post.title,
+    title:   decodeHtmlEntities(post.title),
     date:    new Date(post.created_utc * 1000).toISOString(),
-    excerpt: post.selftext.trim().slice(0, 200),
+    excerpt: stripMarkdown(decodeHtmlEntities(post.selftext.trim().slice(0, 200))),
     url:     `${REDDIT_BASE}${post.permalink}`,
   }))
 }

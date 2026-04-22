@@ -72,7 +72,7 @@ export default function ClanLeaderboard() {
 
   return (
     <WidgetShell
-      title="Clan Leaderboard"
+      title="Player Leaderboard"
       refreshKeys={trackedRSNs.map(rsn => ['player', 'profile', rsn])}
       isLoading={isLoading}
       isError={isError}

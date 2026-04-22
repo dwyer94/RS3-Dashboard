@@ -57,39 +57,48 @@ const emptyStyle: React.CSSProperties = {
 }
 
 interface TooltipState {
-  x: number
-  y: number
-  skillName: string
+  x:          number
+  y:          number
+  skillName:  string
   monthLabel: string
-  xp: number
+  primary:    number
+  compare:    number | null
+}
+
+function makeQueries(rsn: string, enabled: boolean, delayMs = 0) {
+  return SKILLS.map(skill => ({
+    queryKey: ['player', 'xpmonthly', rsn, skill.id],
+    queryFn: async () => {
+      if (delayMs) await new Promise(r => setTimeout(r, delayMs))
+      if (config.useMockData) return mockXPMonthlyBySkill[skill.id] ?? mockXPMonthly
+      return fetchXPMonthly(rsn, skill.id)
+    },
+    enabled,
+    staleTime: 60 * 60 * 1000,
+  }))
 }
 
 export default function XPHeatmap() {
-  const rsn = usePlayerStore(s => s.primaryRSN)
-  const [tooltip, setTooltip] = useState<TooltipState | null>(null)
+  const rsn          = usePlayerStore(s => s.primaryRSN)
+  const trackedRSNs  = usePlayerStore(s => s.trackedRSNs)
+  const [compareRSN, setCompareRSN] = useState('')
+  const [tooltip, setTooltip]       = useState<TooltipState | null>(null)
 
-  const results = useQueries({
-    queries: SKILLS.map(skill => ({
-      queryKey: ['player', 'xpmonthly', rsn, skill.id],
-      queryFn: () => {
-        if (config.useMockData) {
-          return mockXPMonthlyBySkill[skill.id] ?? mockXPMonthly
-        }
-        return fetchXPMonthly(rsn, skill.id)
-      },
-      enabled:   rsn.trim().length > 0,
-      staleTime: 60 * 60 * 1000,
-    })),
-  })
+  const compareOptions = trackedRSNs.filter(r => r !== rsn)
 
-  const anyLoading    = results.some(r => r.isLoading)
-  const anyError      = results.some(r => r.isError)
-  const firstError    = results.find(r => r.isError)?.error ?? null
-  const dataUpdatedAt = Math.max(...results.map(r => r.dataUpdatedAt ?? 0)) || undefined
+  const primaryResults = useQueries({ queries: makeQueries(rsn, rsn.trim().length > 0) })
+  const compareResults = useQueries({ queries: makeQueries(compareRSN, compareRSN.trim().length > 0, 200) })
 
-  // Collect the last 12 calendar months across all resolved data
+  const anyLoading    = primaryResults.some(r => r.isLoading)
+  const anyFetching   = primaryResults.some(r => r.isFetching)
+  const resolvedCount = primaryResults.filter(r => !r.isLoading).length
+  const loadPct       = Math.round((resolvedCount / primaryResults.length) * 100)
+  const anyError      = primaryResults.some(r => r.isError)
+  const firstError    = primaryResults.find(r => r.isError)?.error ?? null
+  const dataUpdatedAt = Math.max(...primaryResults.map(r => r.dataUpdatedAt ?? 0)) || undefined
+
   const allMonthKeys = new Set<string>()
-  for (const r of results) {
+  for (const r of primaryResults) {
     for (const entry of r.data ?? []) {
       for (const m of entry.months) {
         allMonthKeys.add(`${m.year}-${String(m.month).padStart(2, '0')}`)
@@ -98,24 +107,29 @@ export default function XPHeatmap() {
   }
   const monthColumns = Array.from(allMonthKeys).sort().slice(-12)
 
-  // Build per-skill rows — only skills with at least 1 XP gained are shown
-  const skillRows = SKILLS.map((skill, i) => {
-    const entries   = results[i].data ?? []
-    const entry     = entries[0]
-    const monthMap  = new Map<string, number>()
-
+  function buildMonthMap(results: typeof primaryResults, idx: number) {
+    const entries  = results[idx].data ?? []
+    const entry    = entries[0]
+    const monthMap = new Map<string, number>()
     if (entry) {
       for (const m of entry.months) {
         const key = `${m.year}-${String(m.month).padStart(2, '0')}`
         monthMap.set(key, m.xpGained)
       }
     }
+    return monthMap
+  }
 
-    const values   = Array.from(monthMap.values())
-    const totalXP  = values.reduce((a, b) => a + b, 0)
-    const peakXP   = Math.max(...values, 1)
+  const skillRows = SKILLS.map((skill, i) => {
+    const primaryMap  = buildMonthMap(primaryResults, i)
+    const compareMap  = compareRSN ? buildMonthMap(compareResults, i) : null
 
-    return { skill, monthMap, totalXP, peakXP, isLoading: results[i].isLoading }
+    const primaryVals = Array.from(primaryMap.values())
+    const compareVals = compareMap ? Array.from(compareMap.values()) : []
+    const allVals     = [...primaryVals, ...compareVals]
+    const peakXP      = Math.max(...allVals, 1)
+
+    return { skill, primaryMap, compareMap, peakXP, isLoading: primaryResults[i].isLoading }
   })
 
   const refreshKeys = SKILLS.map(s => ['player', 'xpmonthly', rsn, s.id])
@@ -137,6 +151,52 @@ export default function XPHeatmap() {
         </div>
       ) : (
         <div style={{ padding: '8px 12px 10px', height: '100%', overflow: 'auto' }}>
+          {/* Fetch progress bar */}
+          {anyFetching && (
+            <div style={{ height: 2, background: 'var(--border-dim)', marginBottom: 8, overflow: 'hidden' }}>
+              <div style={{
+                height:     '100%',
+                width:      `${loadPct}%`,
+                background: 'var(--teal)',
+                transition: 'width 0.3s ease',
+              }} />
+            </div>
+          )}
+
+          {/* Compare selector */}
+          {compareOptions.length > 0 && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: 9, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.07em' }}>
+                Compare
+              </span>
+              <select
+                value={compareRSN}
+                onChange={e => setCompareRSN(e.target.value)}
+                style={{
+                  background:  'var(--bg-raised)',
+                  border:      '1px solid var(--border)',
+                  color:       compareRSN ? 'var(--gold)' : 'var(--text-muted)',
+                  fontFamily:  'var(--font-body)',
+                  fontSize:    10,
+                  padding:     '2px 6px',
+                }}
+              >
+                <option value="">— none —</option>
+                {compareOptions.map(r => <option key={r} value={r}>{r}</option>)}
+              </select>
+              {compareRSN && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontFamily: 'var(--font-body)', fontSize: 9, color: 'var(--teal)' }}>
+                    <span style={{ width: 8, height: 8, background: 'rgba(61,184,160,0.7)', display: 'inline-block' }} /> {rsn}
+                  </span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontFamily: 'var(--font-body)', fontSize: 9, color: 'var(--gold)' }}>
+                    <span style={{ width: 8, height: 8, background: 'rgba(200,146,58,0.7)', display: 'inline-block' }} /> {compareRSN}
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
+
           {/* Month header */}
           <div style={{
             display:             'grid',
@@ -167,7 +227,7 @@ export default function XPHeatmap() {
 
           {/* Skill rows */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            {skillRows.map(({ skill, monthMap, peakXP }) => (
+            {skillRows.map(({ skill, primaryMap, compareMap, peakXP }) => (
               <div key={skill.id} style={{
                 display:             'grid',
                 gridTemplateColumns: `74px repeat(${monthColumns.length}, 1fr)`,
@@ -185,33 +245,51 @@ export default function XPHeatmap() {
                 }}>
                   {skill.name}
                 </div>
+
                 {monthColumns.map(key => {
-                  const xp        = monthMap.get(key) ?? 0
-                  const intensity = xp / peakXP
+                  const pxp       = primaryMap.get(key) ?? 0
+                  const cxp       = compareMap?.get(key) ?? 0
+                  const pIntensity = pxp / peakXP
+                  const cIntensity = cxp / peakXP
+
                   return (
                     <div
                       key={key}
-                      onMouseEnter={xp > 0 ? e => {
+                      onMouseEnter={(pxp > 0 || cxp > 0) ? e => {
                         const rect = (e.target as HTMLElement).getBoundingClientRect()
                         setTooltip({
                           x:          rect.left + rect.width / 2,
                           y:          rect.top,
                           skillName:  skill.name,
                           monthLabel: `${MONTHS[parseInt(key.split('-')[1]) - 1]} '${key.split('-')[0].slice(2)}`,
-                          xp,
+                          primary:    pxp,
+                          compare:    compareMap ? cxp : null,
                         })
                       } : undefined}
-                      onMouseLeave={xp > 0 ? () => setTooltip(null) : undefined}
-                      style={{
-                        height:       18,
-                        background:   xp > 0
-                          ? `rgba(61, 184, 160, ${(0.1 + intensity * 0.7).toFixed(2)})`
+                      onMouseLeave={() => setTooltip(null)}
+                      style={{ display: 'flex', flexDirection: 'column', gap: 1 }}
+                    >
+                      {/* Primary row */}
+                      <div style={{
+                        height:       compareMap ? 12 : 18,
+                        background:   pxp > 0
+                          ? `rgba(61, 184, 160, ${(0.1 + pIntensity * 0.7).toFixed(2)})`
                           : 'rgba(255,255,255,0.03)',
-                        border:       `1px solid rgba(61, 184, 160, ${xp > 0 ? '0.20' : '0.06'})`,
+                        border:       `1px solid rgba(61, 184, 160, ${pxp > 0 ? '0.20' : '0.06'})`,
                         borderRadius: 1,
-                        cursor:       xp > 0 ? 'default' : undefined,
-                      }}
-                    />
+                      }} />
+                      {/* Compare row */}
+                      {compareMap && (
+                        <div style={{
+                          height:       12,
+                          background:   cxp > 0
+                            ? `rgba(200, 146, 58, ${(0.1 + cIntensity * 0.7).toFixed(2)})`
+                            : 'rgba(255,255,255,0.03)',
+                          border:       `1px solid rgba(200, 146, 58, ${cxp > 0 ? '0.20' : '0.06'})`,
+                          borderRadius: 1,
+                        }} />
+                      )}
+                    </div>
                   )
                 })}
               </div>
@@ -236,23 +314,28 @@ export default function XPHeatmap() {
           boxShadow:     '0 4px 12px rgba(0,0,0,0.4)',
         }}>
           <div style={{
-            fontFamily: 'var(--font-body)',
-            fontSize:   9,
-            color:      'var(--text-muted)',
+            fontFamily:    'var(--font-body)',
+            fontSize:      9,
+            color:         'var(--text-muted)',
             textTransform: 'uppercase',
             letterSpacing: '0.06em',
-            marginBottom: 2,
+            marginBottom:  2,
           }}>
             {tooltip.skillName} · {tooltip.monthLabel}
           </div>
-          <div style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize:   13,
-            fontWeight: 600,
-            color:      'var(--teal)',
-          }}>
-            {tooltip.xp.toLocaleString()} XP
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 13, fontWeight: 600, color: 'var(--teal)' }}>
+            {tooltip.primary.toLocaleString()} XP
           </div>
+          {tooltip.compare !== null && (
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--gold)', marginTop: 2 }}>
+              {tooltip.compare.toLocaleString()} XP
+              {tooltip.compare > 0 && tooltip.primary > 0 && (
+                <span style={{ color: 'var(--text-muted)', marginLeft: 6, fontSize: 9 }}>
+                  ({tooltip.primary > tooltip.compare ? '+' : ''}{formatXP(tooltip.primary - tooltip.compare)})
+                </span>
+              )}
+            </div>
+          )}
         </div>
       )}
     </WidgetShell>

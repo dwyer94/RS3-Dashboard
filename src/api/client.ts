@@ -1,5 +1,6 @@
 import config from '../config'
 import { ApiError } from './types'
+import { logRequest } from './requestLog'
 
 const PROXY_DOMAINS = [
   'apps.runescape.com',
@@ -15,14 +16,24 @@ export function proxyUrl(url: string): string {
 }
 
 export async function apiFetch<T>(url: string): Promise<T> {
-  const response = await fetch(proxyUrl(url))
+  const complete = logRequest(url)
+  let response: Response
+
+  try {
+    response = await fetch(proxyUrl(url))
+  } catch (err) {
+    complete('error')
+    throw err
+  }
 
   if (!response.ok) {
+    complete('error', response.status)
     throw new ApiError(
       `HTTP ${response.status}: ${response.statusText}`,
       response.status,
     )
   }
 
+  complete('ok', response.status)
   return response.json() as Promise<T>
 }

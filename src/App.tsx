@@ -6,6 +6,7 @@ import useLayoutStore from './stores/useLayoutStore'
 import type { WidgetLayout } from './stores/useLayoutStore'
 import { widgetRegistry, getWidgetById } from './widgets/registry'
 import SettingsDrawer from './components/SettingsDrawer'
+import PerfOverlay from './components/PerfOverlay'
 import config from './config'
 
 const BREAKPOINTS = { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }
@@ -15,6 +16,7 @@ export default function App() {
   const { widgets, addWidget, removeWidget, updateLayout } = useLayoutStore()
   const [settingsOpen, setSettingsOpen]   = useState(false)
   const [addPanelOpen, setAddPanelOpen]   = useState(false)
+  const [perfOpen, setPerfOpen]           = useState(false)
   const { containerRef: gridRef, width: gridWidth } = useContainerWidth()
 
   const activeWidgets = widgets.filter(w => w.visible)
@@ -85,6 +87,18 @@ export default function App() {
         </button>
 
         <button
+          onClick={() => setPerfOpen(p => !p)}
+          title="Query performance"
+          style={{
+            color:      perfOpen ? 'var(--gold)' : 'var(--text-muted)',
+            background: 'none', border: 'none', cursor: 'pointer',
+            fontFamily: 'var(--font-mono)', fontSize: 11, lineHeight: 1,
+          }}
+        >
+          ⏱
+        </button>
+
+        <button
           onClick={() => setSettingsOpen(true)}
           title="Settings"
           style={{ color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'pointer', lineHeight: 1 }}
@@ -119,7 +133,7 @@ export default function App() {
       )}
 
       {/* ── Grid ── */}
-      <main ref={gridRef} style={{ flex: 1, overflow: 'auto', padding: 12 }}>
+      <main ref={gridRef} style={{ flex: 1, overflow: 'auto', padding: '12px 20px' }}>
         {activeWidgets.length === 0 ? (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '60vh', gap: 16, color: 'var(--text-muted)', textAlign: 'center' }}>
             <span style={{ fontFamily: 'var(--font-logo)', fontSize: 48, color: 'var(--border-mid)' }}>ᚱ</span>
@@ -138,6 +152,7 @@ export default function App() {
             layouts={{ lg: lgLayouts }}
             onLayoutChange={handleLayoutChange}
             dragConfig={{ handle: '.widget-shell header' }}
+            resizeConfig={{ handles: ['se', 'sw', 'ne', 'nw'] }}
           >
             {activeWidgets.map(w => {
               const def = getWidgetById(w.id)
@@ -171,6 +186,7 @@ export default function App() {
       </footer>
 
       <SettingsDrawer open={settingsOpen} onClose={() => setSettingsOpen(false)} />
+      {perfOpen && <PerfOverlay onClose={() => setPerfOpen(false)} />}
     </div>
   )
 }

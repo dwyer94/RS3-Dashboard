@@ -21,7 +21,7 @@ export default function SettingsDrawer({ open, onClose }: SettingsDrawerProps) {
     primaryRSN, trackedRSNs, profileStatus,
     addRSN, removeRSN, setPrimary, setStatus,
   } = usePlayerStore()
-  const { theme, setTheme, resetLayout } = useLayoutStore()
+  const { theme, setTheme, uiScale, setUiScale, resetLayout } = useLayoutStore()
 
   const [rsnInput, setRsnInput]       = useState('')
   const [addState, setAddState]       = useState<'idle' | 'loading' | 'error'>('idle')
@@ -241,7 +241,7 @@ export default function SettingsDrawer({ open, onClose }: SettingsDrawerProps) {
           {/* Appearance */}
           <section>
             <SectionLabel>Appearance</SectionLabel>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
               <span style={{ fontSize: 13, color: 'var(--text-secondary)' }}>Dark mode</span>
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -268,6 +268,31 @@ export default function SettingsDrawer({ open, onClose }: SettingsDrawerProps) {
                   transition: 'left 0.2s',
                 }} />
               </button>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <span style={{ fontSize: 13, color: 'var(--text-secondary)' }}>Text size</span>
+              <div style={{ display: 'flex', gap: 4 }}>
+                {([1, 1.15, 1.3] as const).map((scale, i) => (
+                  <button
+                    key={scale}
+                    onClick={() => setUiScale(scale)}
+                    style={{
+                      fontFamily:  'var(--font-body)',
+                      fontSize:    10 + i * 3,
+                      fontWeight:  600,
+                      width:       32,
+                      height:      28,
+                      background:  uiScale === scale ? 'var(--bg-raised)' : 'none',
+                      border:      `1px solid ${uiScale === scale ? 'var(--gold-line)' : 'var(--border-dim)'}`,
+                      color:       uiScale === scale ? 'var(--gold)' : 'var(--text-muted)',
+                      cursor:      'pointer',
+                    }}
+                  >
+                    A
+                  </button>
+                ))}
+              </div>
             </div>
           </section>
 

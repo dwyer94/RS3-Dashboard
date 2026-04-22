@@ -94,7 +94,7 @@ export const widgetRegistry: WidgetDefinition[] = [
   },
   {
     id:          'clan-leaderboard',
-    name:        'Clan Leaderboard',
+    name:        'Player Leaderboard',
     description: 'Skill-based leaderboard for all tracked players.',
     component:   ClanLeaderboard,
     defaultSize: { w: 6, h: 5 },

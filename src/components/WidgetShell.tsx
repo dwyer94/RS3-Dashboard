@@ -73,8 +73,8 @@ export default function WidgetShell({
 
       {/* Header */}
       <header
-        className="flex items-center justify-between px-3 shrink-0"
-        style={{ height: 36, borderBottom: '1px solid var(--border-dim)' }}
+        className="flex items-center justify-between shrink-0"
+        style={{ height: 36, borderBottom: '1px solid var(--border-dim)', padding: '0 20px' }}
       >
         <div className="flex items-center gap-2">
           {isLive && <div className="live-dot" />}
