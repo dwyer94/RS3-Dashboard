@@ -116,7 +116,7 @@ export default function XPHeatmap() {
     const peakXP   = Math.max(...values, 1)
 
     return { skill, monthMap, totalXP, peakXP, isLoading: results[i].isLoading }
-  }).filter(r => r.totalXP > 0)
+  })
 
   const refreshKeys = SKILLS.map(s => ['player', 'xpmonthly', rsn, s.id])
 
