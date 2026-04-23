@@ -1,0 +1,64 @@
+name: DXP Pipeline
+
+on:
+  schedule:
+    - cron: '0 3 * * *'   # Daily at 03:00 UTC
+  workflow_dispatch:        # Manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get ISO week (cache key rotates weekly for fresh backfill)
+        id: week
+        run: echo "week=$(date +%Y-W%V)" >> "$GITHUB_OUTPUT"
+
+      # Restore DB from previous run — on cache miss (new week or first run)
+      # the pipeline runs a full backfill automatically.
+      - name: Restore DB cache
+        id: cache-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: scripts/dxp_pipeline/dxp_data.db
+          key: dxp-db-v1-${{ steps.week.outputs.week }}
+          restore-keys: dxp-db-v1-
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r scripts/dxp_pipeline/requirements.txt
+
+      - name: Run DXP pipeline
+        working-directory: scripts/dxp_pipeline
+        run: python generate.py
+
+      # Save DB even on failure so partial backfill progress isn't lost
+      - name: Save DB cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: scripts/dxp_pipeline/dxp_data.db
+          key: dxp-db-v1-${{ steps.week.outputs.week }}
+
+      # Stage output file for gh-pages deploy
+      - name: Prepare deploy directory
+        run: |
+          mkdir -p gh_deploy
+          cp scripts/dxp_pipeline/dxp_scores.json gh_deploy/dxp_scores.json
+
+      - name: Deploy dxp_scores.json to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: gh_deploy
+          target-folder: data
+          clean: false         # never wipe other files on gh-pages (e.g. app build)
+          commit-message: "chore: update dxp_scores.json [skip ci]"

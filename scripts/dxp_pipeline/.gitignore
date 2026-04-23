@@ -1,0 +1,12 @@
+# SQLite DB — cached in GitHub Actions, never committed
+dxp_data.db
+dxp_data.db-shm
+dxp_data.db-wal
+
+# Generated output — deployed to gh-pages by CI, not committed to main
+dxp_scores.json
+
+# Python caches
+__pycache__/
+*.pyc
+.pytest_cache/

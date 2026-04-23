@@ -1,0 +1,259 @@
+import { useState } from 'react'
+import WidgetShell from '../components/WidgetShell'
+import { useDxpSummary } from '../hooks/useDxpSummary'
+import type { DxpMover } from '../api/dxp'
+
+type Tab = 'pre' | 'during' | 'post'
+
+const TABS: { key: Tab; label: string; field: keyof DxpMover }[] = [
+  { key: 'pre',    label: 'Pre-event',  field: 'pre_lift_pct'    },
+  { key: 'during', label: 'During',     field: 'during_lift_pct' },
+  { key: 'post',   label: 'Post-event', field: 'post_lift_pct'   },
+]
+
+function fmtPct(n: number | null | undefined): string {
+  if (n == null) return '—'
+  return `${n >= 0 ? '+' : ''}${n.toFixed(1)}%`
+}
+
+function fmtDate(iso: string): string {
+  return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+}
+
+function fmtRelative(iso: string): string {
+  const diffMs = Date.now() - new Date(iso).getTime()
+  const diffH  = Math.floor(diffMs / 3_600_000)
+  if (diffH < 1) return 'just now'
+  if (diffH < 24) return `${diffH}h ago`
+  return `${Math.floor(diffH / 24)}d ago`
+}
+
+export default function DxpIntelligence() {
+  const { data, isLoading, isError, error, dataUpdatedAt } = useDxpSummary()
+  const [tab, setTab] = useState<Tab>('pre')
+
+  const activeField = TABS.find(t => t.key === tab)!.field
+
+  const sorted = [...(data?.top_movers ?? [])].sort((a, b) => {
+    const av = a[activeField] as number ?? 0
+    const bv = b[activeField] as number ?? 0
+    return tab === 'post' ? av - bv : bv - av
+  })
+
+  const nextEvent  = data?.next_event
+  const syncStatus = data?.sync_status
+
+  return (
+    <WidgetShell
+      title="DXP Intelligence"
+      refreshKeys={[['dxp', 'summary']]}
+      isLoading={isLoading}
+      isError={isError}
+      error={error as Error | null}
+      dataUpdatedAt={dataUpdatedAt}
+    >
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+
+        {/* Countdown header */}
+        <div style={{
+          padding:      '8px 12px 6px',
+          borderBottom: '1px solid var(--border-dim)',
+          flexShrink:   0,
+        }}>
+          {nextEvent ? (
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+              <span style={{ fontFamily: 'var(--font-display)', fontSize: 11, color: 'var(--gold)', letterSpacing: '0.08em' }}>
+                DXP
+              </span>
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'var(--text-primary)' }}>
+                {fmtDate(nextEvent.start_date)} – {fmtDate(nextEvent.end_date)}
+              </span>
+              <span style={{
+                marginLeft:    'auto',
+                fontFamily:    'var(--font-mono)',
+                fontSize:      11,
+                color:         nextEvent.days_until === 0 ? 'var(--teal)' : 'var(--text-secondary)',
+                fontWeight:    600,
+              }}>
+                {nextEvent.days_until === 0 ? 'ACTIVE' : `T\u2212${nextEvent.days_until}d`}
+              </span>
+            </div>
+          ) : (
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'var(--text-muted)' }}>
+              No upcoming DXP events found
+            </span>
+          )}
+        </div>
+
+        {/* Avg lift stats */}
+        {data && (
+          <div style={{
+            display:       'flex',
+            gap:           16,
+            padding:       '5px 12px',
+            borderBottom:  '1px solid var(--border-dim)',
+            flexShrink:    0,
+          }}>
+            {[
+              { label: 'Avg pre-event',  value: data.avg_pre_lift_pct    },
+              { label: 'Avg during',     value: data.avg_during_lift_pct },
+              { label: 'Avg post-event', value: data.avg_post_lift_pct   },
+            ].map(s => (
+              <div key={s.label}>
+                <div style={{ fontFamily: 'var(--font-body)', fontSize: 8, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                  {s.label}
+                </div>
+                <div style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize:   12,
+                  color:      s.value == null ? 'var(--text-muted)'
+                            : s.value >= 0    ? 'var(--teal)'
+                            : 'var(--red)',
+                }}>
+                  {fmtPct(s.value)}
+                </div>
+              </div>
+            ))}
+            <div style={{ marginLeft: 'auto', alignSelf: 'center' }}>
+              <div style={{ fontFamily: 'var(--font-body)', fontSize: 8, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                Items scored
+              </div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-secondary)', textAlign: 'right' }}>
+                {data.scored_items.toLocaleString()}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Tabs */}
+        <div style={{ display: 'flex', borderBottom: '1px solid var(--border-dim)', flexShrink: 0 }}>
+          {TABS.map(t => (
+            <button
+              key={t.key}
+              onClick={() => setTab(t.key)}
+              style={{
+                flex:          1,
+                padding:       '6px 0',
+                fontFamily:    'var(--font-display)',
+                fontSize:      9,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color:         tab === t.key ? 'var(--gold)' : 'var(--text-muted)',
+                borderBottom:  tab === t.key ? '2px solid var(--gold)' : '2px solid transparent',
+                background:    'transparent',
+                cursor:        'pointer',
+                transition:    'color 0.15s',
+              }}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Column headers */}
+        <div style={{
+          display:             'grid',
+          gridTemplateColumns: '1fr 72px 48px',
+          padding:             '3px 12px',
+          gap:                 8,
+          borderBottom:        '1px solid var(--border-dim)',
+          flexShrink:          0,
+        }}>
+          {['Item', 'Lift %', 'Events'].map((h, i) => (
+            <div key={h} style={{
+              fontFamily:    'var(--font-body)',
+              fontSize:      8,
+              color:         'var(--text-muted)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.06em',
+              textAlign:     i === 0 ? 'left' : 'right',
+            }}>
+              {h}
+            </div>
+          ))}
+        </div>
+
+        {/* Rows */}
+        <div style={{ flex: 1, overflowY: 'auto', minHeight: 0 }}>
+          {sorted.map(item => {
+            const val = item[activeField] as number | null
+            return (
+              <div key={item.item_id} style={{
+                display:             'grid',
+                gridTemplateColumns: '1fr 72px 48px',
+                alignItems:          'center',
+                padding:             '4px 12px',
+                gap:                 8,
+                borderBottom:        '1px solid var(--border-dim)',
+              }}>
+                <div style={{
+                  fontFamily:    'var(--font-body)',
+                  fontSize:      11,
+                  color:         'var(--text-primary)',
+                  overflow:      'hidden',
+                  textOverflow:  'ellipsis',
+                  whiteSpace:    'nowrap',
+                }}>
+                  {item.item_name ?? `Item ${item.item_id}`}
+                </div>
+                <div style={{
+                  textAlign:  'right',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize:   11,
+                  color:      val == null ? 'var(--text-muted)'
+                            : val >= 0   ? 'var(--teal)'
+                            : 'var(--red)',
+                }}>
+                  {fmtPct(val)}
+                </div>
+                <div style={{
+                  textAlign:  'right',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize:   10,
+                  color:      'var(--text-muted)',
+                }}>
+                  {item.events_observed}
+                </div>
+              </div>
+            )
+          })}
+
+          {!isLoading && sorted.length === 0 && (
+            <div style={{ padding: '16px 12px', fontFamily: 'var(--font-body)', fontSize: 11, color: 'var(--text-muted)' }}>
+              No scored items yet — run the pipeline first.
+            </div>
+          )}
+        </div>
+
+        {/* Footer: sync status + generation time */}
+        {syncStatus && (
+          <div style={{
+            padding:      '4px 12px',
+            borderTop:    '1px solid var(--border-dim)',
+            display:      'flex',
+            alignItems:   'center',
+            gap:          6,
+            flexShrink:   0,
+          }}>
+            <span style={{
+              fontSize: 9,
+              color:    syncStatus.ok ? 'var(--teal)' : 'var(--gold)',
+            }}>
+              {syncStatus.ok ? '●' : '⚠'}
+            </span>
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: 9, color: 'var(--text-muted)' }}>
+              {syncStatus.ok
+                ? syncStatus.last_sync ? `Wiki sync ${fmtRelative(syncStatus.last_sync)}` : 'Wiki sync OK'
+                : `Wiki sync failed — ${syncStatus.error}`}
+            </span>
+            {data?.generated_at && (
+              <span style={{ marginLeft: 'auto', fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--text-muted)' }}>
+                Data {fmtRelative(data.generated_at)}
+              </span>
+            )}
+          </div>
+        )}
+      </div>
+    </WidgetShell>
+  )
+}

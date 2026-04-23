@@ -9,6 +9,7 @@ import FriendComparison    from './FriendComparison'
 import ClanLeaderboard     from './ClanLeaderboard'
 import MarketWatchlist     from './MarketWatchlist'
 import MarketMovers        from './MarketMovers'
+import DxpIntelligence     from './DxpIntelligence'
 
 export interface WidgetDefinition {
   id:          string
@@ -122,14 +123,14 @@ export const widgetRegistry: WidgetDefinition[] = [
     phase:       5,
   },
 
-  // ── Phase 6: Fun ────────────────────────────────────────────────────────────
+  // ── Phase 6: DXP ────────────────────────────────────────────────────────────
   {
-    id:          'boss-drop-simulator',
-    name:        'Boss Drop Simulator',
-    description: 'Simulate boss drop rolls to estimate rates.',
-    component:   Placeholder,
-    defaultSize: { w: 6, h: 5 },
-    minSize:     { w: 4, h: 4 },
+    id:          'dxp-intelligence',
+    name:        'DXP Intelligence',
+    description: 'Countdown to next Double XP Weekend with pre/during/post price movers.',
+    component:   DxpIntelligence,
+    defaultSize: { w: 6, h: 6 },
+    minSize:     { w: 4, h: 5 },
     phase:       6,
   },
 ]
