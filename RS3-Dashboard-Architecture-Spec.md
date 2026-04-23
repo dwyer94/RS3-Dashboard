@@ -10,7 +10,7 @@ A personal RuneScape 3 dashboard aggregating player stats, Grand Exchange market
 | **Deployment Target** | Cloudflare Pages (static) + Cloudflare Worker (CORS proxy)                |
 | **Primary APIs**      | Weird Gloop, RuneMetrics, Jagex GE Catalogue, RS Wiki MediaWiki           |
 | **Persistence**       | localStorage via Zustand persist middleware — no backend required         |
-| **Author**            | Christian — Strongpoint Labs (personal project)                           |
+| **Author**            | Christian (personal project)                           |
 
 ---
 

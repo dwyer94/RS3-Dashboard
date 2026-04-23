@@ -37,7 +37,13 @@
       "WebFetch(domain:astrect.gitbook.io)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:crystalmathlabs.com)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(pip install *)",
+      "Bash(python -m pytest tests/ -v)",
+      "Bash(python generate.py)",
+      "Bash(Get-Content \"C:\\\\Users\\\\dwyer\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-dwyer-PythonProjects-RS3Dashboard\\\\0b598884-f77e-4492-826f-bb251cf244c5\\\\tasks\\\\bh2xokm4i.output\")",
+      "Bash(python -u generate.py)"
     ]
   }
 }

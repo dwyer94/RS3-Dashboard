@@ -30,7 +30,7 @@ localStorage via Zustand persist middleware — no backend required
 
 Author
 
-Christian — Strongpoint Labs (personal project)
+Christian — personal project
 
 1. Architecture Decision Record
 All major technology and design decisions are documented here with rationale and alternatives considered. These decisions were made upfront to prevent technical debt during widget development.
@@ -828,4 +828,4 @@ Patch Note Analyzer + Ollama integration
 
 Depends on home server build with RTX 3080 running Ollama headlessly.
 
-RS3 Dashboard  ·  Architecture Spec v2.0  ·  Strongpoint Labs
+RS3 Dashboard  ·  Architecture Spec v2.0
