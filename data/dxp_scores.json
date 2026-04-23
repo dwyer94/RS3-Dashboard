@@ -1,0 +1,832 @@
+{
+  "generated_at": "2026-04-23T23:47:00.431984+00:00",
+  "next_event": {
+    "id": 1,
+    "start_date": "2026-05-01",
+    "end_date": "2026-05-10",
+    "status": "confirmed",
+    "source": "wiki",
+    "days_until": 8
+  },
+  "all_events": [
+    {
+      "id": 1,
+      "start_date": "2026-05-01",
+      "end_date": "2026-05-10",
+      "status": "confirmed",
+      "source": "wiki",
+      "days_until": 8
+    }
+  ],
+  "top_movers": [
+    {
+      "item_id": 59317,
+      "item_name": "Summer Warrior (Skeleton Warrior) token (59317)",
+      "pre_lift_pct": 30.888030888030883,
+      "during_lift_pct": 43.24324324324324,
+      "post_lift_pct": 43.24324324324324,
+      "events_observed": 3
+    },
+    {
+      "item_id": 51806,
+      "item_name": "Resonant anima of Bik (tradeable)",
+      "pre_lift_pct": -24.456305599162743,
+      "during_lift_pct": -6.561438561438563,
+      "post_lift_pct": -16.159079016221877,
+      "events_observed": 4
+    },
+    {
+      "item_id": 59315,
+      "item_name": "Casual Beachwear outfit token (59315)",
+      "pre_lift_pct": 23.552123552123547,
+      "during_lift_pct": 38.73873873873874,
+      "post_lift_pct": 45.68854568854569,
+      "events_observed": 3
+    },
+    {
+      "item_id": 55978,
+      "item_name": "Soul Surge cosmetic ability scroll",
+      "pre_lift_pct": -18.46476371056201,
+      "during_lift_pct": -23.78480676575827,
+      "post_lift_pct": -23.52744513944151,
+      "events_observed": 4
+    },
+    {
+      "item_id": 55980,
+      "item_name": "Soul Dive cosmetic ability scroll",
+      "pre_lift_pct": -16.66388628097451,
+      "during_lift_pct": -21.030334372548626,
+      "post_lift_pct": -18.900410729139438,
+      "events_observed": 4
+    },
+    {
+      "item_id": 59412,
+      "item_name": "Tuska's Wrath ability codex",
+      "pre_lift_pct": -14.719960610274105,
+      "during_lift_pct": -30.027127300313253,
+      "post_lift_pct": -43.29344253387433,
+      "events_observed": 2
+    },
+    {
+      "item_id": 48960,
+      "item_name": "Powerburst vial",
+      "pre_lift_pct": -12.789115646258503,
+      "during_lift_pct": -21.748917748917748,
+      "post_lift_pct": -13.863945578231288,
+      "events_observed": 4
+    },
+    {
+      "item_id": 1523,
+      "item_name": "Lockpick",
+      "pre_lift_pct": -12.727272727272727,
+      "during_lift_pct": -7.003541912632819,
+      "post_lift_pct": 5.36549165120594,
+      "events_observed": 4
+    },
+    {
+      "item_id": 58976,
+      "item_name": "Starbloom flower seed",
+      "pre_lift_pct": 12.31589837470536,
+      "during_lift_pct": 30.417997890279374,
+      "post_lift_pct": 9.398547630181564,
+      "events_observed": 3
+    },
+    {
+      "item_id": 57127,
+      "item_name": "Manuscript of Amascut",
+      "pre_lift_pct": -12.277065230280238,
+      "during_lift_pct": -21.737367882413555,
+      "post_lift_pct": -30.60389010214041,
+      "events_observed": 4
+    },
+    {
+      "item_id": 40310,
+      "item_name": "Key to the Crossing",
+      "pre_lift_pct": -11.404027925923424,
+      "during_lift_pct": -16.42646955682105,
+      "post_lift_pct": -21.069012474888105,
+      "events_observed": 4
+    },
+    {
+      "item_id": 42937,
+      "item_name": "Crypt scythe token",
+      "pre_lift_pct": 11.177445370619438,
+      "during_lift_pct": 66.3381113034091,
+      "post_lift_pct": 156.45025495398687,
+      "events_observed": 4
+    },
+    {
+      "item_id": 53997,
+      "item_name": "Wraith walk override token",
+      "pre_lift_pct": -10.908323475016099,
+      "during_lift_pct": -13.529687461799941,
+      "post_lift_pct": -18.285490404012737,
+      "events_observed": 4
+    },
+    {
+      "item_id": 53996,
+      "item_name": "Spooky Ghost Mask token",
+      "pre_lift_pct": -10.836830303425312,
+      "during_lift_pct": -20.256027586783098,
+      "post_lift_pct": -26.784338106370253,
+      "events_observed": 4
+    },
+    {
+      "item_id": 53988,
+      "item_name": "Boolap Bag Mask token",
+      "pre_lift_pct": -10.687119025785316,
+      "during_lift_pct": -19.381882405400763,
+      "post_lift_pct": -24.66064850603909,
+      "events_observed": 4
+    },
+    {
+      "item_id": 53992,
+      "item_name": "Spooky Hare Mask token",
+      "pre_lift_pct": -10.361062137396365,
+      "during_lift_pct": -19.377096305503724,
+      "post_lift_pct": -27.575180710513685,
+      "events_observed": 4
+    },
+    {
+      "item_id": 38964,
+      "item_name": "Zombie walk override token",
+      "pre_lift_pct": -10.085373188789978,
+      "during_lift_pct": -11.435259807061712,
+      "post_lift_pct": -11.270535633063565,
+      "events_observed": 4
+    },
+    {
+      "item_id": 54938,
+      "item_name": "Soul Witch token",
+      "pre_lift_pct": -9.989743240604462,
+      "during_lift_pct": -18.849076563286815,
+      "post_lift_pct": -25.260484201945847,
+      "events_observed": 4
+    },
+    {
+      "item_id": 48575,
+      "item_name": "Inert adrenaline crystal",
+      "pre_lift_pct": -9.769797743963107,
+      "during_lift_pct": -18.132107649424952,
+      "post_lift_pct": -17.141087981550047,
+      "events_observed": 4
+    },
+    {
+      "item_id": 59358,
+      "item_name": "The Devourer's Nexus (unattuned)",
+      "pre_lift_pct": 9.7651363537557,
+      "during_lift_pct": 18.595359928489724,
+      "post_lift_pct": 27.850017243886114,
+      "events_observed": 3
+    },
+    {
+      "item_id": 25485,
+      "item_name": "Weapon poison (4)",
+      "pre_lift_pct": -9.584551204142688,
+      "during_lift_pct": -11.374692725558683,
+      "post_lift_pct": -12.036436636176537,
+      "events_observed": 4
+    },
+    {
+      "item_id": 53884,
+      "item_name": "Taboo pet token",
+      "pre_lift_pct": -9.554408693856752,
+      "during_lift_pct": -11.14203159453252,
+      "post_lift_pct": -15.077300490932126,
+      "events_observed": 4
+    },
+    {
+      "item_id": 57668,
+      "item_name": "Pumpkin Residual Souls cosmetic ability scroll",
+      "pre_lift_pct": -9.214617809040792,
+      "during_lift_pct": -12.972523559473755,
+      "post_lift_pct": -17.57520447357159,
+      "events_observed": 4
+    },
+    {
+      "item_id": 56821,
+      "item_name": "Corrupted Creature Wildcard",
+      "pre_lift_pct": -9.202242697117926,
+      "during_lift_pct": -12.782753513287199,
+      "post_lift_pct": -16.474641578728868,
+      "events_observed": 4
+    },
+    {
+      "item_id": 57919,
+      "item_name": "Shrouded Veil token",
+      "pre_lift_pct": -8.853364477111725,
+      "during_lift_pct": -12.78129017647984,
+      "post_lift_pct": -14.150038403493499,
+      "events_observed": 4
+    },
+    {
+      "item_id": 59270,
+      "item_name": "Duskrunner's Hairstyle token",
+      "pre_lift_pct": -8.708932635719377,
+      "during_lift_pct": -12.14054433369759,
+      "post_lift_pct": -14.188936246764161,
+      "events_observed": 3
+    },
+    {
+      "item_id": 59001,
+      "item_name": "Starbloom cloth",
+      "pre_lift_pct": 8.471807826544426,
+      "during_lift_pct": 18.756855487995285,
+      "post_lift_pct": 25.04036923635282,
+      "events_observed": 3
+    },
+    {
+      "item_id": 361,
+      "item_name": "Tuna",
+      "pre_lift_pct": -8.157275357268317,
+      "during_lift_pct": -14.295945843165498,
+      "post_lift_pct": -15.374045885244115,
+      "events_observed": 4
+    },
+    {
+      "item_id": 47572,
+      "item_name": "Bone master outfit token",
+      "pre_lift_pct": -8.156148015770503,
+      "during_lift_pct": -13.39642224010002,
+      "post_lift_pct": -12.019388826664562,
+      "events_observed": 4
+    },
+    {
+      "item_id": 57920,
+      "item_name": "Faded Veil token",
+      "pre_lift_pct": -8.048583718106665,
+      "during_lift_pct": -11.61113569699835,
+      "post_lift_pct": -12.388880423281613,
+      "events_observed": 4
+    },
+    {
+      "item_id": 882,
+      "item_name": "Bronze arrow",
+      "pre_lift_pct": -8.041723194451256,
+      "during_lift_pct": -14.784119558895558,
+      "post_lift_pct": -21.652053999263515,
+      "events_observed": 4
+    },
+    {
+      "item_id": 58911,
+      "item_name": "Springbloom Witch Staff token",
+      "pre_lift_pct": -8.002891947191046,
+      "during_lift_pct": -17.683663187791556,
+      "post_lift_pct": -24.800186049556057,
+      "events_observed": 3
+    },
+    {
+      "item_id": 383,
+      "item_name": "Raw shark",
+      "pre_lift_pct": 7.998721423442656,
+      "during_lift_pct": 8.799280694411081,
+      "post_lift_pct": 1.856083578149539,
+      "events_observed": 4
+    },
+    {
+      "item_id": 50415,
+      "item_name": "Vegetable apron token",
+      "pre_lift_pct": 7.929920308634941,
+      "during_lift_pct": 8.801808330859537,
+      "post_lift_pct": 8.801808330859537,
+      "events_observed": 4
+    },
+    {
+      "item_id": 44343,
+      "item_name": "Plague doctor walk override token",
+      "pre_lift_pct": -7.897735450801485,
+      "during_lift_pct": -9.738242990743872,
+      "post_lift_pct": -12.460389577681676,
+      "events_observed": 4
+    },
+    {
+      "item_id": 15270,
+      "item_name": "Raw rocktail",
+      "pre_lift_pct": 7.755312540409965,
+      "during_lift_pct": 8.545949209114635,
+      "post_lift_pct": 2.586296990798103,
+      "events_observed": 4
+    },
+    {
+      "item_id": 58255,
+      "item_name": "Eternal magic wood spirit",
+      "pre_lift_pct": 7.748809088110448,
+      "during_lift_pct": 11.382355535688559,
+      "post_lift_pct": 12.115041408110278,
+      "events_observed": 4
+    },
+    {
+      "item_id": 526,
+      "item_name": "Bones",
+      "pre_lift_pct": -7.6680876627613435,
+      "during_lift_pct": -15.67795036683885,
+      "post_lift_pct": -3.8161418455009177,
+      "events_observed": 4
+    },
+    {
+      "item_id": 2007,
+      "item_name": "Spice",
+      "pre_lift_pct": 7.665136845895535,
+      "during_lift_pct": 16.924797292740923,
+      "post_lift_pct": 28.18143169301139,
+      "events_observed": 4
+    },
+    {
+      "item_id": 1734,
+      "item_name": "Thread",
+      "pre_lift_pct": -7.560972204872354,
+      "during_lift_pct": -4.746835117302708,
+      "post_lift_pct": -10.080271293221012,
+      "events_observed": 4
+    },
+    {
+      "item_id": 1444,
+      "item_name": "Water talisman",
+      "pre_lift_pct": 7.479960675841641,
+      "during_lift_pct": 14.893498064475859,
+      "post_lift_pct": 1.2244305346905164,
+      "events_observed": 4
+    },
+    {
+      "item_id": 30372,
+      "item_name": "Magic notepaper",
+      "pre_lift_pct": 7.4525826670989614,
+      "during_lift_pct": 4.830912732009802,
+      "post_lift_pct": 7.044409097749953,
+      "events_observed": 4
+    },
+    {
+      "item_id": 1963,
+      "item_name": "Banana",
+      "pre_lift_pct": -7.366427811561461,
+      "during_lift_pct": -12.090144559378313,
+      "post_lift_pct": -12.80234972469931,
+      "events_observed": 4
+    },
+    {
+      "item_id": 50401,
+      "item_name": "Crustacea armour token",
+      "pre_lift_pct": 7.266736030485138,
+      "during_lift_pct": 7.266736030485138,
+      "post_lift_pct": 12.208774356544584,
+      "events_observed": 4
+    },
+    {
+      "item_id": 35226,
+      "item_name": "Portable crafter",
+      "pre_lift_pct": -7.2226027564567445,
+      "during_lift_pct": -16.57571318306409,
+      "post_lift_pct": -22.37977451461645,
+      "events_observed": 4
+    },
+    {
+      "item_id": 19996,
+      "item_name": "Juju vial",
+      "pre_lift_pct": -7.218045112781956,
+      "during_lift_pct": -5.815447710184556,
+      "post_lift_pct": -0.6058002148227739,
+      "events_observed": 4
+    },
+    {
+      "item_id": 42938,
+      "item_name": "Crypt staff token",
+      "pre_lift_pct": 7.194954757251756,
+      "during_lift_pct": 31.301544319175996,
+      "post_lift_pct": 56.46316955337891,
+      "events_observed": 4
+    },
+    {
+      "item_id": 886,
+      "item_name": "Steel arrow",
+      "pre_lift_pct": -7.1308049211159545,
+      "during_lift_pct": -2.9594566855821034,
+      "post_lift_pct": 7.500690076345588,
+      "events_observed": 4
+    },
+    {
+      "item_id": 31044,
+      "item_name": "Portable well",
+      "pre_lift_pct": -6.933551275994683,
+      "during_lift_pct": -17.571211393729644,
+      "post_lift_pct": -24.475119323970787,
+      "events_observed": 4
+    },
+    {
+      "item_id": 269,
+      "item_name": "Clean torstol",
+      "pre_lift_pct": 6.7097371289027326,
+      "during_lift_pct": 7.553027735051439,
+      "post_lift_pct": 4.859701904756234,
+      "events_observed": 4
+    },
+    {
+      "item_id": 2327,
+      "item_name": "Meat pie",
+      "pre_lift_pct": 6.680153133352936,
+      "during_lift_pct": 10.696089041411396,
+      "post_lift_pct": 16.55326061934825,
+      "events_observed": 4
+    },
+    {
+      "item_id": 28253,
+      "item_name": "Wine of Guthix",
+      "pre_lift_pct": -6.631905579034575,
+      "during_lift_pct": -14.28975632620497,
+      "post_lift_pct": -22.64819530717248,
+      "events_observed": 4
+    },
+    {
+      "item_id": 25547,
+      "item_name": "Spider silk",
+      "pre_lift_pct": -6.620498840219887,
+      "during_lift_pct": -10.25824739558503,
+      "post_lift_pct": -11.716891514260215,
+      "events_observed": 4
+    },
+    {
+      "item_id": 52811,
+      "item_name": "Golden roses",
+      "pre_lift_pct": -6.541317704239618,
+      "during_lift_pct": -7.077886304257079,
+      "post_lift_pct": -9.52424976907849,
+      "events_observed": 4
+    },
+    {
+      "item_id": 35227,
+      "item_name": "Portable fletcher",
+      "pre_lift_pct": -6.511931133489994,
+      "during_lift_pct": -15.894098903579977,
+      "post_lift_pct": -23.905297114418662,
+      "events_observed": 4
+    },
+    {
+      "item_id": 55336,
+      "item_name": "Ectoplasm",
+      "pre_lift_pct": -6.468167203765388,
+      "during_lift_pct": -5.0966191906245655,
+      "post_lift_pct": -16.49751718977474,
+      "events_observed": 4
+    },
+    {
+      "item_id": 313,
+      "item_name": "Fishing bait",
+      "pre_lift_pct": -6.4468127991937525,
+      "during_lift_pct": -2.4803957946815056,
+      "post_lift_pct": 3.575132275132278,
+      "events_observed": 4
+    },
+    {
+      "item_id": 58998,
+      "item_name": "Soft porcelain clay",
+      "pre_lift_pct": 6.433916808249484,
+      "during_lift_pct": 14.327786036331743,
+      "post_lift_pct": 22.413866335750686,
+      "events_observed": 3
+    },
+    {
+      "item_id": 31613,
+      "item_name": "Spring",
+      "pre_lift_pct": 6.426492425488504,
+      "during_lift_pct": -1.2381239290152097,
+      "post_lift_pct": 1.1687122289828207,
+      "events_observed": 4
+    },
+    {
+      "item_id": 59350,
+      "item_name": "Tumeken's Light",
+      "pre_lift_pct": 6.279107427382235,
+      "during_lift_pct": 14.182798871636232,
+      "post_lift_pct": 22.364359685175348,
+      "events_observed": 3
+    },
+    {
+      "item_id": 53314,
+      "item_name": "Plague doctor teleport override token",
+      "pre_lift_pct": -6.23961657651978,
+      "during_lift_pct": -9.854122185792885,
+      "post_lift_pct": -11.91955396252038,
+      "events_observed": 4
+    },
+    {
+      "item_id": 55596,
+      "item_name": "Greater ghostly ink",
+      "pre_lift_pct": -6.114429883816911,
+      "during_lift_pct": -0.5416709741878156,
+      "post_lift_pct": -5.584699731688236,
+      "events_observed": 4
+    },
+    {
+      "item_id": 559,
+      "item_name": "Body rune",
+      "pre_lift_pct": -6.094572851231803,
+      "during_lift_pct": -8.48062021434628,
+      "post_lift_pct": -8.384667327903177,
+      "events_observed": 4
+    },
+    {
+      "item_id": 53207,
+      "item_name": "'Rainbow' title scroll",
+      "pre_lift_pct": -6.075668807092475,
+      "during_lift_pct": -8.65797909743082,
+      "post_lift_pct": -11.043207859858615,
+      "events_observed": 4
+    },
+    {
+      "item_id": 31042,
+      "item_name": "Portable range",
+      "pre_lift_pct": -6.055792240380888,
+      "during_lift_pct": -14.384343409254102,
+      "post_lift_pct": -23.132038807695945,
+      "events_observed": 4
+    },
+    {
+      "item_id": 41223,
+      "item_name": "Mystic cloth",
+      "pre_lift_pct": -5.971299194095,
+      "during_lift_pct": -6.763315384785029,
+      "post_lift_pct": -7.209938312579489,
+      "events_observed": 4
+    },
+    {
+      "item_id": 59336,
+      "item_name": "Robe top of Tumeken's resplendence",
+      "pre_lift_pct": 5.969758776623378,
+      "during_lift_pct": 13.487740911081037,
+      "post_lift_pct": 23.5428343077213,
+      "events_observed": 3
+    },
+    {
+      "item_id": 54797,
+      "item_name": "Artisanal gears",
+      "pre_lift_pct": -5.839893365922444,
+      "during_lift_pct": -6.045286972519357,
+      "post_lift_pct": -4.264355814693,
+      "events_observed": 4
+    },
+    {
+      "item_id": 20266,
+      "item_name": "Accursed ashes",
+      "pre_lift_pct": 5.822624228509903,
+      "during_lift_pct": 11.587528878553188,
+      "post_lift_pct": 25.806044673517203,
+      "events_observed": 4
+    },
+    {
+      "item_id": 59340,
+      "item_name": "Boots of Tumeken's resplendence",
+      "pre_lift_pct": 5.793642768116089,
+      "during_lift_pct": 12.880076406965127,
+      "post_lift_pct": 23.622813624714578,
+      "events_observed": 3
+    },
+    {
+      "item_id": 558,
+      "item_name": "Mind rune",
+      "pre_lift_pct": -5.753714819261035,
+      "during_lift_pct": -7.05097190391308,
+      "post_lift_pct": -4.233295540438395,
+      "events_observed": 4
+    },
+    {
+      "item_id": 59000,
+      "item_name": "Starbloom thread",
+      "pre_lift_pct": 5.734512793325129,
+      "during_lift_pct": 14.320053779395137,
+      "post_lift_pct": 24.018460941381985,
+      "events_observed": 3
+    },
+    {
+      "item_id": 59361,
+      "item_name": "Necrotic anima stone",
+      "pre_lift_pct": 5.717283332759943,
+      "during_lift_pct": 9.943203068024603,
+      "post_lift_pct": 14.876557345725512,
+      "events_observed": 3
+    },
+    {
+      "item_id": 58882,
+      "item_name": "Grapevine seed",
+      "pre_lift_pct": -5.640854056076122,
+      "during_lift_pct": -9.653852232512389,
+      "post_lift_pct": -16.486313250028825,
+      "events_observed": 4
+    },
+    {
+      "item_id": 7936,
+      "item_name": "Pure essence",
+      "pre_lift_pct": -5.627362867580603,
+      "during_lift_pct": -6.164990226422993,
+      "post_lift_pct": -15.59881025591031,
+      "events_observed": 4
+    },
+    {
+      "item_id": 2162,
+      "item_name": "King worm",
+      "pre_lift_pct": -5.607377620020019,
+      "during_lift_pct": -10.923167894575718,
+      "post_lift_pct": -18.233673803691318,
+      "events_observed": 4
+    },
+    {
+      "item_id": 47571,
+      "item_name": "Skeletal bear pet token",
+      "pre_lift_pct": 5.604284753395043,
+      "during_lift_pct": 5.055848507294112,
+      "post_lift_pct": 6.113952345388073,
+      "events_observed": 4
+    },
+    {
+      "item_id": 5297,
+      "item_name": "Irit seed",
+      "pre_lift_pct": 5.574379873323799,
+      "during_lift_pct": 11.490513556674413,
+      "post_lift_pct": 16.20494198636221,
+      "events_observed": 4
+    },
+    {
+      "item_id": 56398,
+      "item_name": "Uncut moonstone",
+      "pre_lift_pct": -5.541890977898122,
+      "during_lift_pct": -5.082100038221108,
+      "post_lift_pct": -9.611941349776961,
+      "events_observed": 4
+    },
+    {
+      "item_id": 59344,
+      "item_name": "Mask of Tumeken's resplendence",
+      "pre_lift_pct": 5.498151569965354,
+      "during_lift_pct": 12.774797501272035,
+      "post_lift_pct": 22.185614122762182,
+      "events_observed": 3
+    },
+    {
+      "item_id": 5285,
+      "item_name": "Orange tree seed",
+      "pre_lift_pct": -5.481743576518684,
+      "during_lift_pct": -8.571362883692712,
+      "post_lift_pct": -14.407076653908474,
+      "events_observed": 4
+    },
+    {
+      "item_id": 35228,
+      "item_name": "Portable brazier",
+      "pre_lift_pct": -5.432461198581423,
+      "during_lift_pct": -14.850556493889142,
+      "post_lift_pct": -24.599072010167756,
+      "events_observed": 4
+    },
+    {
+      "item_id": 20264,
+      "item_name": "Impious ashes",
+      "pre_lift_pct": -5.420373483836829,
+      "during_lift_pct": -6.3595421805026,
+      "post_lift_pct": -4.261922222283461,
+      "events_observed": 4
+    },
+    {
+      "item_id": 54917,
+      "item_name": "Willow wood spirit",
+      "pre_lift_pct": -5.414935459894455,
+      "during_lift_pct": -11.616522588737467,
+      "post_lift_pct": -19.113807698469035,
+      "events_observed": 4
+    },
+    {
+      "item_id": 1925,
+      "item_name": "Bucket",
+      "pre_lift_pct": 5.411559644132427,
+      "during_lift_pct": 8.14410854291264,
+      "post_lift_pct": 18.386860220817734,
+      "events_observed": 4
+    },
+    {
+      "item_id": 34929,
+      "item_name": "Summer prize token",
+      "pre_lift_pct": 5.407094602546828,
+      "during_lift_pct": 9.548458071105205,
+      "post_lift_pct": 14.873700220868814,
+      "events_observed": 4
+    },
+    {
+      "item_id": 59342,
+      "item_name": "Gloves of Tumeken's resplendence",
+      "pre_lift_pct": 5.347870428971396,
+      "during_lift_pct": 12.37039306725689,
+      "post_lift_pct": 21.66650620518582,
+      "events_observed": 3
+    },
+    {
+      "item_id": 29319,
+      "item_name": "Vibrant energy",
+      "pre_lift_pct": -5.338276763458963,
+      "during_lift_pct": -0.6692187770211461,
+      "post_lift_pct": -1.0138215017989591,
+      "events_observed": 4
+    },
+    {
+      "item_id": 59263,
+      "item_name": "Dragonstone Gala Attire token",
+      "pre_lift_pct": -5.261960263772237,
+      "during_lift_pct": -12.843536865026564,
+      "post_lift_pct": -12.843536865026564,
+      "events_observed": 3
+    },
+    {
+      "item_id": 1913,
+      "item_name": "Dwarven stout",
+      "pre_lift_pct": 5.2572423224308835,
+      "during_lift_pct": 9.887344869518612,
+      "post_lift_pct": 15.533052125348549,
+      "events_observed": 4
+    },
+    {
+      "item_id": 55488,
+      "item_name": "Crown of the First Necromancer",
+      "pre_lift_pct": -5.192328291382382,
+      "during_lift_pct": -9.061510935551786,
+      "post_lift_pct": -10.099077552059235,
+      "events_observed": 4
+    },
+    {
+      "item_id": 56796,
+      "item_name": "Soul Devourer Wildcard",
+      "pre_lift_pct": -5.156756541743103,
+      "during_lift_pct": -7.7699104413784035,
+      "post_lift_pct": -10.599793874873567,
+      "events_observed": 4
+    },
+    {
+      "item_id": 884,
+      "item_name": "Iron arrow",
+      "pre_lift_pct": -5.1552485716839795,
+      "during_lift_pct": -7.337933299054733,
+      "post_lift_pct": -12.180382499990662,
+      "events_observed": 4
+    },
+    {
+      "item_id": 56602,
+      "item_name": "Rainbow Dragonbreath cosmetic ability scroll",
+      "pre_lift_pct": -5.131963301974401,
+      "during_lift_pct": -5.131963301974401,
+      "post_lift_pct": -7.749391144746083,
+      "events_observed": 4
+    },
+    {
+      "item_id": 12539,
+      "item_name": "Grenwall spikes",
+      "pre_lift_pct": -5.12517374453562,
+      "during_lift_pct": -12.623049191513873,
+      "post_lift_pct": -6.410921321202203,
+      "events_observed": 4
+    },
+    {
+      "item_id": 6812,
+      "item_name": "Wyvern bones",
+      "pre_lift_pct": 5.103758103186061,
+      "during_lift_pct": 19.35357910214032,
+      "post_lift_pct": 11.28995282922878,
+      "events_observed": 4
+    },
+    {
+      "item_id": 51818,
+      "item_name": "Manuscript of Ful",
+      "pre_lift_pct": 5.090123694237631,
+      "during_lift_pct": 6.519331687631556,
+      "post_lift_pct": 10.110663864245582,
+      "events_observed": 4
+    },
+    {
+      "item_id": 59269,
+      "item_name": "Duskrunner's Outfit token",
+      "pre_lift_pct": -5.0179814856973115,
+      "during_lift_pct": -7.871736323478629,
+      "post_lift_pct": -9.83341450465123,
+      "events_observed": 3
+    },
+    {
+      "item_id": 54924,
+      "item_name": "Elder wood spirit",
+      "pre_lift_pct": 5.015820746463526,
+      "during_lift_pct": 6.611286435806379,
+      "post_lift_pct": 2.763112760243352,
+      "events_observed": 4
+    },
+    {
+      "item_id": 56811,
+      "item_name": "Lost Grove Creature Wildcard",
+      "pre_lift_pct": 4.993386755560392,
+      "during_lift_pct": 9.159539356462767,
+      "post_lift_pct": 12.813694997089197,
+      "events_observed": 4
+    }
+  ],
+  "avg_pre_lift_pct": -0.05,
+  "avg_during_lift_pct": -0.02,
+  "avg_post_lift_pct": -0.11,
+  "scored_items": 6962,
+  "sync_status": {
+    "ok": true,
+    "last_sync": "2026-04-23T23:46:55.615681+00:00",
+    "error": null
+  }
+}
