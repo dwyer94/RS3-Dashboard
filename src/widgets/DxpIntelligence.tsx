@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import WidgetShell from '../components/WidgetShell'
 import { useDxpSummary } from '../hooks/useDxpSummary'
 import type { DxpMover } from '../api/dxp'
@@ -11,13 +11,33 @@ const TABS: { key: Tab; label: string; field: keyof DxpMover }[] = [
   { key: 'post',   label: 'Post-event', field: 'post_lift_pct'   },
 ]
 
+// DXP events start and end at 12:00 UTC on the stored date.
+const DXP_START_HOUR_UTC = 12
+
+function dxpStartMs(isoDate: string): number {
+  const d = new Date(`${isoDate}T${String(DXP_START_HOUR_UTC).padStart(2, '0')}:00:00Z`)
+  return d.getTime()
+}
+
 function fmtPct(n: number | null | undefined): string {
   if (n == null) return '—'
   return `${n >= 0 ? '+' : ''}${n.toFixed(1)}%`
 }
 
 function fmtDate(iso: string): string {
-  return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+  return new Date(`${iso}T${String(DXP_START_HOUR_UTC).padStart(2, '0')}:00:00Z`)
+    .toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
+}
+
+function fmtCountdown(msRemaining: number): string {
+  if (msRemaining <= 0) return 'ACTIVE'
+  const s = Math.floor(msRemaining / 1000)
+  const d = Math.floor(s / 86400)
+  const h = Math.floor((s % 86400) / 3600)
+  const m = Math.floor((s % 3600) / 60)
+  const sc = s % 60
+  if (d > 0) return `${d}d ${String(h).padStart(2, '0')}h ${String(m).padStart(2, '0')}m`
+  return `${String(h).padStart(2, '0')}h ${String(m).padStart(2, '0')}m ${String(sc).padStart(2, '0')}s`
 }
 
 function fmtRelative(iso: string): string {
@@ -30,7 +50,18 @@ function fmtRelative(iso: string): string {
 
 export default function DxpIntelligence() {
   const { data, isLoading, isError, error, dataUpdatedAt } = useDxpSummary()
-  const [tab, setTab] = useState<Tab>('pre')
+  const [tab, setTab]           = useState<Tab>('pre')
+  const [now, setNow]           = useState(() => Date.now())
+
+  // Tick every second when an upcoming event exists, every minute otherwise
+  useEffect(() => {
+    const nextEvent = data?.next_event
+    if (!nextEvent) return
+    const startMs = dxpStartMs(nextEvent.start_date)
+    const interval = startMs > Date.now() ? 1000 : 60_000
+    const id = setInterval(() => setNow(Date.now()), interval)
+    return () => clearInterval(id)
+  }, [data?.next_event])
 
   const activeField = TABS.find(t => t.key === tab)!.field
 
@@ -43,6 +74,10 @@ export default function DxpIntelligence() {
   const nextEvent  = data?.next_event
   const syncStatus = data?.sync_status
 
+  const startMs    = nextEvent ? dxpStartMs(nextEvent.start_date) : null
+  const msLeft     = startMs != null ? Math.max(0, startMs - now) : null
+  const isActive   = startMs != null && now >= startMs
+
   return (
     <WidgetShell
       title="DXP Intelligence"
@@ -54,7 +89,7 @@ export default function DxpIntelligence() {
     >
       <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
 
-        {/* Countdown header */}
+        {/* Header: event dates + live countdown */}
         <div style={{
           padding:      '8px 12px 6px',
           borderBottom: '1px solid var(--border-dim)',
@@ -68,14 +103,24 @@ export default function DxpIntelligence() {
               <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'var(--text-primary)' }}>
                 {fmtDate(nextEvent.start_date)} – {fmtDate(nextEvent.end_date)}
               </span>
-              <span style={{
-                marginLeft:    'auto',
-                fontFamily:    'var(--font-mono)',
-                fontSize:      11,
-                color:         nextEvent.days_until === 0 ? 'var(--teal)' : 'var(--text-secondary)',
-                fontWeight:    600,
-              }}>
-                {nextEvent.days_until === 0 ? 'ACTIVE' : `T\u2212${nextEvent.days_until}d`}
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: 9, color: 'var(--text-muted)' }}>
+                12:00 UTC
+              </span>
+              <span style={{ marginLeft: 'auto', display: 'flex', alignItems: 'baseline', gap: 5 }}>
+                <span style={{
+                  fontFamily:    'var(--font-mono)',
+                  fontSize:      13,
+                  fontWeight:    600,
+                  color:         isActive ? 'var(--teal)' : 'var(--text-secondary)',
+                  letterSpacing: '0.04em',
+                }}>
+                  {msLeft != null ? fmtCountdown(msLeft) : '—'}
+                </span>
+                {!isActive && (
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 9, color: 'var(--text-muted)' }}>
+                    until start
+                  </span>
+                )}
               </span>
             </div>
           ) : (
@@ -235,10 +280,7 @@ export default function DxpIntelligence() {
             gap:          6,
             flexShrink:   0,
           }}>
-            <span style={{
-              fontSize: 9,
-              color:    syncStatus.ok ? 'var(--teal)' : 'var(--gold)',
-            }}>
+            <span style={{ fontSize: 9, color: syncStatus.ok ? 'var(--teal)' : 'var(--gold)' }}>
               {syncStatus.ok ? '●' : '⚠'}
             </span>
             <span style={{ fontFamily: 'var(--font-body)', fontSize: 9, color: 'var(--text-muted)' }}>
