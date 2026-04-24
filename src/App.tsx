@@ -108,6 +108,17 @@ export default function App() {
             <path d="M9 1v2M9 15v2M1 9h2M15 9h2M3.22 3.22l1.41 1.41M13.36 13.36l1.42 1.42M14.78 3.22l-1.42 1.41M4.63 13.36l-1.41 1.42" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
           </svg>
         </button>
+
+        {/* Brand mark — top-right */}
+        <div style={{
+          width: 26, height: 26, border: '1px solid var(--gold-line)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          position: 'relative', flexShrink: 0, opacity: 0.55,
+        }}>
+          <span style={{ position: 'absolute', bottom: -1, left: -1, width: 5, height: 5, borderBottom: '1px solid var(--gold)', borderLeft: '1px solid var(--gold)' }} />
+          <span style={{ position: 'absolute', bottom: -1, right: -1, width: 5, height: 5, borderBottom: '1px solid var(--gold)', borderRight: '1px solid var(--gold)' }} />
+          <span style={{ fontFamily: 'var(--font-logo)', color: 'var(--gold)', fontSize: 13, userSelect: 'none' }}>ᚱ</span>
+        </div>
       </header>
 
       {/* ── Add Widget Panel ── */}
