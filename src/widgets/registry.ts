@@ -11,6 +11,7 @@ import MarketWatchlist     from './MarketWatchlist'
 import MarketMovers        from './MarketMovers'
 import DxpIntelligence     from './DxpIntelligence'
 import WorldClock          from './WorldClock'
+import ProfileLookup       from './ProfileLookup'
 
 export interface WidgetDefinition {
   id:          string
@@ -48,6 +49,15 @@ export const widgetRegistry: WidgetDefinition[] = [
 
   // ── Phase 3: Player ─────────────────────────────────────────────────────────
   {
+    id:          'profile-lookup',
+    name:        'Profile Lookup',
+    description: 'Look up any RS3 player — skills, quests, and recent activities.',
+    component:   ProfileLookup,
+    defaultSize: { w: 7, h: 7 },
+    minSize:     { w: 4, h: 4 },
+    phase:       3,
+  },
+  {
     id:          'player-skill-snapshot',
     name:        'Skill Snapshot',
     description: 'All skill levels and XP for a tracked player.',
@@ -62,7 +72,7 @@ export const widgetRegistry: WidgetDefinition[] = [
     description: 'Recent in-game activities for a tracked player.',
     component:   ActivityFeed,
     defaultSize: { w: 4, h: 4 },
-    minSize:     { w: 3, h: 3 },
+    minSize:     { w: 2, h: 3 },
     phase:       3,
   },
   {
@@ -82,7 +92,7 @@ export const widgetRegistry: WidgetDefinition[] = [
     description: '12-month XP gain calendar heatmap.',
     component:   XPHeatmap,
     defaultSize: { w: 8, h: 8 },
-    minSize:     { w: 6, h: 5 },
+    minSize:     { w: 2, h: 5 },
     phase:       4,
   },
   {
@@ -91,7 +101,7 @@ export const widgetRegistry: WidgetDefinition[] = [
     description: 'Side-by-side skill comparison across tracked players.',
     component:   FriendComparison,
     defaultSize: { w: 6, h: 4 },
-    minSize:     { w: 4, h: 3 },
+    minSize:     { w: 2, h: 3 },
     phase:       4,
   },
   {

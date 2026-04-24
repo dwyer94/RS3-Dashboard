@@ -1,6 +1,6 @@
 import { apiFetch } from './client'
 import { ApiError } from './types'
-import type { PlayerProfile, XPMonthlyData } from './types'
+import type { PlayerProfile, QuestEntry, XPMonthlyData } from './types'
 
 const BASE = 'https://apps.runescape.com/runemetrics'
 
@@ -36,6 +36,7 @@ interface RawProfileResponse {
   totalxp:      number
   totalskill:   number
   combatlevel:  number
+  loggedIn?:    string   // "true" | "false"
   skillvalues:  RawSkill[]
   activities:   RawActivity[]
   error?:       string
@@ -57,6 +58,7 @@ export async function fetchPlayerProfile(rsn: string): Promise<PlayerProfile> {
     totalXP:     raw.totalxp,
     totalLevel:  raw.totalskill,
     combatLevel: raw.combatlevel,
+    loggedIn:    raw.loggedIn === 'true',
     skills: raw.skillvalues.map(s => ({
       id:    s.id,
       name:  SKILL_NAMES[s.id] ?? `Skill ${s.id}`,
@@ -70,6 +72,41 @@ export async function fetchPlayerProfile(rsn: string): Promise<PlayerProfile> {
       date:    a.date,
     })),
   }
+}
+
+interface RawQuestEntry {
+  title:        string
+  status:       string
+  difficulty:   number
+  members:      boolean
+  questPoints:  number
+  userEligible: boolean
+}
+
+interface RawQuestsResponse {
+  quests: RawQuestEntry[]
+  error?:  string
+}
+
+export async function fetchPlayerQuests(rsn: string): Promise<QuestEntry[]> {
+  const url = `${BASE}/quests?user=${encodeURIComponent(rsn)}`
+  const raw = await apiFetch<RawQuestsResponse>(url)
+
+  if (raw.error) {
+    if (raw.error.toLowerCase().includes('private')) {
+      throw new ApiError('Profile is private', 403, 'private')
+    }
+    throw new ApiError('Player not found', 404, 'notfound')
+  }
+
+  return (raw.quests ?? []).map(q => ({
+    title:        q.title,
+    status:       q.status as QuestEntry['status'],
+    difficulty:   q.difficulty,
+    members:      q.members,
+    questPoints:  q.questPoints,
+    userEligible: q.userEligible,
+  }))
 }
 
 interface RawXPMonthlyEntry {

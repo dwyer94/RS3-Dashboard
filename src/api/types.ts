@@ -19,8 +19,18 @@ export interface PlayerProfile {
   totalXP:      number
   totalLevel:   number
   combatLevel:  number
+  loggedIn:     boolean
   skills:       SkillData[]
   activities:   ActivityEntry[]
+}
+
+export interface QuestEntry {
+  title:        string
+  status:       'COMPLETED' | 'STARTED' | 'NOT_STARTED'
+  difficulty:   number
+  members:      boolean
+  questPoints:  number
+  userEligible: boolean
 }
 
 export interface MonthlyXP {
