@@ -83,6 +83,38 @@
   --font-body:    'Outfit', system-ui, sans-serif;
 }
 
+/* ── Light mode overrides ── */
+:root:not(.dark) {
+  --bg-base:     #ede5d4;
+  --bg-surface:  #f5f0e4;
+  --bg-raised:   #faf7f0;
+  --bg-topbar:   #d4c4a0;
+
+  --border-dim:  #d8ccb4;
+  --border:      #c4b494;
+  --border-mid:  #a89470;
+  --border-hi:   #8c7450;
+
+  --gold:        #9a6218;
+  --gold-bright: #c07c28;
+  --gold-glow:   rgba(154, 98, 24, 0.15);
+  --gold-line:   rgba(154, 98, 24, 0.30);
+
+  --teal:        #2a9480;
+  --teal-dim:    rgba(42, 148, 128, 0.12);
+
+  --red:         #b04040;
+  --red-dim:     rgba(176, 64, 64, 0.1);
+  --green:       #3a8850;
+  --green-dim:   rgba(58, 136, 80, 0.1);
+  --purple:      #7850b0;
+
+  --text-primary:   #1e1408;
+  --text-secondary: #4a3820;
+  --text-muted:     #8a7050;
+  --text-gold:      #9a6218;
+}
+
 /* ── Base resets ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
