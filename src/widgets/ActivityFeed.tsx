@@ -4,7 +4,7 @@ import usePlayerStore from '../stores/usePlayerStore'
 
 export default function ActivityFeed() {
   const rsn = usePlayerStore(s => s.primaryRSN)
-  const { data, isLoading, isError, error, dataUpdatedAt } = usePlayerProfile(rsn)
+  const { data, isLoading, isFetching, isError, error, dataUpdatedAt } = usePlayerProfile(rsn)
 
   const activities = data?.activities ?? []
 
@@ -13,6 +13,7 @@ export default function ActivityFeed() {
       title="Activity Feed"
       refreshKeys={[['player', 'profile', rsn]]}
       isLoading={isLoading}
+      isFetching={isFetching}
       isError={isError}
       error={error}
       dataUpdatedAt={dataUpdatedAt}

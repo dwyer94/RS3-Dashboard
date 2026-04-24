@@ -148,6 +148,12 @@ body {
   pointer-events: none;
 }
 
+/* ── Widget header / remove buttons ── */
+.widget-header-btn {
+  cursor: pointer;
+}
+
+
 /* ── Teal pulse dot ── */
 .live-dot {
   width: 6px; height: 6px;

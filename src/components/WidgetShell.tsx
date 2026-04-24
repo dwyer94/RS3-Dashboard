@@ -2,6 +2,7 @@ import { Component } from 'react'
 import type { ErrorInfo, ReactNode } from 'react'
 import type { QueryKey } from '@tanstack/react-query'
 import queryClient from '../queryClient'
+import { useWidgetRemove } from './WidgetRemoveContext'
 import WidgetSkeleton from './WidgetSkeleton'
 import WidgetError from './WidgetError'
 
@@ -32,6 +33,7 @@ export interface WidgetShellProps {
   title:          string
   refreshKeys:    QueryKey[]
   isLoading:      boolean
+  isFetching?:    boolean
   isError:        boolean
   error?:         Error | null
   dataUpdatedAt?: number
@@ -44,6 +46,7 @@ export default function WidgetShell({
   title,
   refreshKeys,
   isLoading,
+  isFetching = false,
   isError,
   error,
   dataUpdatedAt,
@@ -51,6 +54,8 @@ export default function WidgetShell({
   isLive,
   children,
 }: WidgetShellProps) {
+
+  const onRemove = useWidgetRemove()
 
   function handleRefresh() {
     refreshKeys.forEach(key => queryClient.invalidateQueries({ queryKey: key as readonly unknown[] }))
@@ -89,18 +94,38 @@ export default function WidgetShell({
           </span>
         </div>
 
-        <button
-          onClick={handleRefresh}
-          title="Refresh"
-          style={{ color: 'var(--text-muted)', lineHeight: 1 }}
-          className="hover:text-[var(--gold)] transition-colors"
-        >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="23 4 23 10 17 10" />
-            <polyline points="1 20 1 14 7 14" />
-            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
-          </svg>
-        </button>
+        <div className="flex items-center gap-3">
+          {refreshKeys.length > 0 && (
+            <button
+              onClick={handleRefresh}
+              disabled={isFetching}
+              title="Refresh"
+              style={{ color: 'var(--text-muted)', lineHeight: 1 }}
+              className="widget-header-btn hover:text-[var(--gold)] transition-colors disabled:opacity-50"
+            >
+              <svg
+                width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                className={isFetching ? 'animate-spin' : ''}
+              >
+                <polyline points="23 4 23 10 17 10" />
+                <polyline points="1 20 1 14 7 14" />
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+              </svg>
+            </button>
+          )}
+          {onRemove && (
+            <button
+              onClick={onRemove}
+              title="Remove widget"
+              style={{ color: 'var(--text-muted)', lineHeight: 1 }}
+              className="widget-header-btn hover:text-[var(--gold)] transition-colors"
+            >
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M1 1l8 8M9 1L1 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+            </button>
+          )}
+        </div>
       </header>
 
       {/* Stale / error banner */}

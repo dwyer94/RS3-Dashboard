@@ -172,7 +172,7 @@ function ItemSearch({ dump, watchlist, onAdd }: {
 const COL_HEADERS = ['Item', 'Price', 'Chg %', 'Z-Score', 'Streak', '']
 
 export default function MarketWatchlist() {
-  const { data: dump, isLoading, isError, error, dataUpdatedAt } = useGEDump()
+  const { data: dump, isLoading, isFetching, isError, error, dataUpdatedAt } = useGEDump()
   const watchlist  = useMarketStore(s => s.watchlist)
   const addItem    = useMarketStore(s => s.addItem)
   const removeItem = useMarketStore(s => s.removeItem)
@@ -182,6 +182,7 @@ export default function MarketWatchlist() {
       title="Market Watchlist"
       refreshKeys={[['ge', 'dump'], ...watchlist.map(id => ['ge', 'history', id])]}
       isLoading={isLoading}
+      isFetching={isFetching}
       isError={isError}
       error={error as Error | null}
       dataUpdatedAt={dataUpdatedAt}

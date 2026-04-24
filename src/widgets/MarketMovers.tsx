@@ -40,7 +40,7 @@ const TABS: { key: Tab; label: string }[] = [
 ]
 
 export default function MarketMovers() {
-  const { data: dump, isLoading, isError, error, dataUpdatedAt } = useGEDump()
+  const { data: dump, isLoading, isFetching, isError, error, dataUpdatedAt } = useGEDump()
   const [tab, setTab] = useState<Tab>('gainers')
   const addItem   = useMarketStore(s => s.addItem)
   const watchlist = useMarketStore(s => s.watchlist)
@@ -71,6 +71,7 @@ export default function MarketMovers() {
       title="Market Movers"
       refreshKeys={[['ge', 'dump']]}
       isLoading={isLoading}
+      isFetching={isFetching}
       isError={isError}
       error={error as Error | null}
       dataUpdatedAt={dataUpdatedAt}

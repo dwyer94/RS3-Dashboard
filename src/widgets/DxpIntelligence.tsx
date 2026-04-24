@@ -57,7 +57,7 @@ function fmtPrice(n: number | undefined): string {
 }
 
 export default function DxpIntelligence() {
-  const { data, isLoading, isError, error, dataUpdatedAt } = useDxpSummary()
+  const { data, isLoading, isFetching, isError, error, dataUpdatedAt } = useDxpSummary()
   const { data: geDump }        = useGEDump()
   const [tab, setTab]           = useState<Tab>('pre')
   const [now, setNow]           = useState(() => Date.now())
@@ -97,6 +97,7 @@ export default function DxpIntelligence() {
       title="DXP Intelligence"
       refreshKeys={[['dxp', 'summary']]}
       isLoading={isLoading}
+      isFetching={isFetching}
       isError={isError}
       error={error as Error | null}
       dataUpdatedAt={dataUpdatedAt}

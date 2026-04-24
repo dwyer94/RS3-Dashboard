@@ -37,13 +37,14 @@ function NewsRow({ item }: { item: NewsItem }) {
 }
 
 export default function RS3News() {
-  const { data, isLoading, isError, error, dataUpdatedAt } = useRS3News()
+  const { data, isLoading, isFetching, isError, error, dataUpdatedAt } = useRS3News()
 
   return (
     <WidgetShell
       title="RS3 News"
       refreshKeys={[['gamestate', 'news']]}
       isLoading={isLoading}
+      isFetching={isFetching}
       isError={isError}
       error={error}
       dataUpdatedAt={dataUpdatedAt}

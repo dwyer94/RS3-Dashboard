@@ -7,6 +7,7 @@ import type { WidgetLayout } from './stores/useLayoutStore'
 import { widgetRegistry, getWidgetById } from './widgets/registry'
 import SettingsDrawer from './components/SettingsDrawer'
 import PerfOverlay from './components/PerfOverlay'
+import { WidgetRemoveContext } from './components/WidgetRemoveContext'
 import config from './config'
 
 const BREAKPOINTS = { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }
@@ -162,7 +163,7 @@ export default function App() {
             margin={[12, 12]}
             layouts={{ lg: lgLayouts }}
             onLayoutChange={handleLayoutChange}
-            dragConfig={{ handle: '.widget-shell header' }}
+            dragConfig={{ handle: '.widget-shell header', cancel: '.widget-header-btn' }}
             resizeConfig={{ handles: ['se', 'sw', 'ne', 'nw'] }}
           >
             {activeWidgets.map(w => {
@@ -170,18 +171,10 @@ export default function App() {
               if (!def) return null
               const Component = def.component
               return (
-                <div key={w.id} style={{ position: 'relative' }}>
-                  <Component />
-                  <button
-                    onClick={() => removeWidget(w.id)}
-                    title="Remove widget"
-                    style={{ position: 'absolute', top: 4, right: 4, zIndex: 10, background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', opacity: 0, transition: 'opacity 0.15s', lineHeight: 1 }}
-                    className="widget-remove-btn"
-                  >
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                      <path d="M1 1l8 8M9 1L1 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
-                    </svg>
-                  </button>
+                <div key={w.id}>
+                  <WidgetRemoveContext.Provider value={() => removeWidget(w.id)}>
+                    <Component />
+                  </WidgetRemoveContext.Provider>
                 </div>
               )
             })}

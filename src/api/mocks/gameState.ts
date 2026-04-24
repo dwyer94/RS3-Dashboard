@@ -6,9 +6,11 @@ function msUntilNextHour(): number {
   return 3_600_000 - msIntoHour
 }
 
-export const mockVoS: VoSData = {
-  districts:    ['Cadarn', 'Ithell'],
-  nextRotation: new Date(Date.now() + msUntilNextHour()),
+export function mockVoS(): VoSData {
+  return {
+    districts:    ['Cadarn', 'Ithell'],
+    nextRotation: new Date(Date.now() + msUntilNextHour()),
+  }
 }
 
 export const mockVoSHistory: VoSHistoryEntry[] = [

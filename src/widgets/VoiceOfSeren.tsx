@@ -15,7 +15,7 @@ const DISTRICT_SKILLS: Record<string, string> = {
 }
 
 export default function VoiceOfSeren() {
-  const { data, isLoading, isError, error, dataUpdatedAt } = useVoS()
+  const { data, isLoading, isFetching, isError, error, dataUpdatedAt } = useVoS()
   const [countdown, setCountdown] = useState('')
 
   const nextRotationMs = data?.nextRotation.getTime()
@@ -35,6 +35,7 @@ export default function VoiceOfSeren() {
       title="Voice of Seren"
       refreshKeys={[['gamestate', 'vos']]}
       isLoading={isLoading}
+      isFetching={isFetching}
       isError={isError}
       error={error}
       dataUpdatedAt={dataUpdatedAt}

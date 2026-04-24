@@ -55,7 +55,7 @@ function SkillCell({ skill }: { skill: SkillData }) {
 
 export default function PlayerSkillSnapshot() {
   const rsn = usePlayerStore(s => s.primaryRSN)
-  const { data, isLoading, isError, error, dataUpdatedAt } = usePlayerProfile(rsn)
+  const { data, isLoading, isFetching, isError, error, dataUpdatedAt } = usePlayerProfile(rsn)
 
   const sorted = data?.skills.slice().sort((a, b) => a.id - b.id) ?? []
 
@@ -64,6 +64,7 @@ export default function PlayerSkillSnapshot() {
       title="Skill Snapshot"
       refreshKeys={[['player', 'profile', rsn]]}
       isLoading={isLoading}
+      isFetching={isFetching}
       isError={isError}
       error={error}
       dataUpdatedAt={dataUpdatedAt}

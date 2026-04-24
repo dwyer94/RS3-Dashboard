@@ -33,7 +33,7 @@ export const widgetRegistry: WidgetDefinition[] = [
     description: 'Current active VoS districts with hourly countdown.',
     component:   VoiceOfSeren,
     defaultSize: { w: 3, h: 3 },
-    minSize:     { w: 2, h: 2 },
+    minSize:     { w: 1, h: 1 },
     phase:       2,
   },
   {
@@ -71,7 +71,7 @@ export const widgetRegistry: WidgetDefinition[] = [
     description: 'Track XP progress toward a target level.',
     component:   SkillGoalTracker,
     defaultSize: { w: 4, h: 3 },
-    minSize:     { w: 3, h: 2 },
+    minSize:     { w: 2, h: 2 },
     phase:       3,
   },
 
