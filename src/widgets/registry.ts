@@ -10,6 +10,7 @@ import ClanLeaderboard     from './ClanLeaderboard'
 import MarketWatchlist     from './MarketWatchlist'
 import MarketMovers        from './MarketMovers'
 import DxpIntelligence     from './DxpIntelligence'
+import WorldClock          from './WorldClock'
 
 export interface WidgetDefinition {
   id:          string
@@ -121,6 +122,17 @@ export const widgetRegistry: WidgetDefinition[] = [
     defaultSize: { w: 8, h: 5 },
     minSize:     { w: 5, h: 4 },
     phase:       5,
+  },
+
+  // ── Utility ──────────────────────────────────────────────────────────────────
+  {
+    id:          'world-clock',
+    name:        'World Clock',
+    description: 'Live local and UTC clocks with offset and daily reset countdown.',
+    component:   WorldClock,
+    defaultSize: { w: 3, h: 2 },
+    minSize:     { w: 1, h: 2 },
+    phase:       2,
   },
 
   // ── Phase 6: DXP ────────────────────────────────────────────────────────────
