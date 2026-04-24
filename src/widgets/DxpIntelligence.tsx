@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import WidgetShell from '../components/WidgetShell'
 import { useDxpSummary } from '../hooks/useDxpSummary'
+import { useGEDump } from '../hooks/useGEDump'
 import type { DxpMover } from '../api/dxp'
 
 type Tab = 'pre' | 'during' | 'post'
@@ -48,10 +49,23 @@ function fmtRelative(iso: string): string {
   return `${Math.floor(diffH / 24)}d ago`
 }
 
+function fmtPrice(n: number | undefined): string {
+  if (n == null) return '—'
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`
+  if (n >= 1_000)     return `${(n / 1_000).toFixed(1)}K`
+  return n.toLocaleString()
+}
+
 export default function DxpIntelligence() {
   const { data, isLoading, isError, error, dataUpdatedAt } = useDxpSummary()
+  const { data: geDump }        = useGEDump()
   const [tab, setTab]           = useState<Tab>('pre')
   const [now, setNow]           = useState(() => Date.now())
+
+  const priceMap = useMemo(() => {
+    if (!geDump) return new Map<number, number>()
+    return new Map(geDump.map(item => [item.id, item.price]))
+  }, [geDump])
 
   // Tick every second when an upcoming event exists, every minute otherwise
   useEffect(() => {
@@ -198,13 +212,13 @@ export default function DxpIntelligence() {
         {/* Column headers */}
         <div style={{
           display:             'grid',
-          gridTemplateColumns: '1fr 72px 48px',
+          gridTemplateColumns: '1fr 72px 72px 48px',
           padding:             '3px 12px',
           gap:                 8,
           borderBottom:        '1px solid var(--border-dim)',
           flexShrink:          0,
         }}>
-          {['Item', 'Lift %', 'Events'].map((h, i) => (
+          {['Item', 'Price', 'Lift %', 'Events'].map((h, i) => (
             <div key={h} style={{
               fontFamily:    'var(--font-body)',
               fontSize:      8,
@@ -221,11 +235,12 @@ export default function DxpIntelligence() {
         {/* Rows */}
         <div style={{ flex: 1, overflowY: 'auto', minHeight: 0 }}>
           {sorted.map(item => {
-            const val = item[activeField] as number | null
+            const val   = item[activeField] as number | null
+            const price = priceMap.get(item.item_id)
             return (
               <div key={item.item_id} style={{
                 display:             'grid',
-                gridTemplateColumns: '1fr 72px 48px',
+                gridTemplateColumns: '1fr 72px 72px 48px',
                 alignItems:          'center',
                 padding:             '4px 12px',
                 gap:                 8,
@@ -240,6 +255,14 @@ export default function DxpIntelligence() {
                   whiteSpace:    'nowrap',
                 }}>
                   {item.item_name ?? `Item ${item.item_id}`}
+                </div>
+                <div style={{
+                  textAlign:  'right',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize:   11,
+                  color:      'var(--text-secondary)',
+                }}>
+                  {fmtPrice(price)}
                 </div>
                 <div style={{
                   textAlign:  'right',

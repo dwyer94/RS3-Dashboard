@@ -4,7 +4,6 @@ import type { QueryKey } from '@tanstack/react-query'
 import queryClient from '../queryClient'
 import WidgetSkeleton from './WidgetSkeleton'
 import WidgetError from './WidgetError'
-import { formatRS3Timestamp } from '../utils/rs3Time'
 
 // ── Error Boundary ────────────────────────────────────────────────────────────
 
@@ -90,23 +89,18 @@ export default function WidgetShell({
           </span>
         </div>
 
-        <div className="flex items-center gap-2">
-          {dataUpdatedAt != null && (
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--text-muted)' }}>
-              {formatRS3Timestamp(new Date(dataUpdatedAt))}
-            </span>
-          )}
-          <button
-            onClick={handleRefresh}
-            title="Refresh"
-            style={{ color: 'var(--text-muted)', lineHeight: 1 }}
-            className="hover:text-[var(--gold)] transition-colors"
-          >
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M10.5 6A4.5 4.5 0 1 1 6 1.5c1.3 0 2.47.55 3.3 1.43L11 1.5v3h-3l1.14-1.14A3 3 0 1 0 9 6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-        </div>
+        <button
+          onClick={handleRefresh}
+          title="Refresh"
+          style={{ color: 'var(--text-muted)', lineHeight: 1 }}
+          className="hover:text-[var(--gold)] transition-colors"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="23 4 23 10 17 10" />
+            <polyline points="1 20 1 14 7 14" />
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+          </svg>
+        </button>
       </header>
 
       {/* Stale / error banner */}
