@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-04-24T05:29:07.914375+00:00",
+  "generated_at": "2026-04-25T05:06:51.893696+00:00",
   "next_event": {
     "id": 1,
     "start_date": "2026-05-01",
     "end_date": "2026-05-10",
     "status": "confirmed",
     "source": "wiki",
-    "days_until": 7
+    "days_until": 6
   },
   "all_events": [
     {
@@ -15,7 +15,7 @@
       "end_date": "2026-05-10",
       "status": "confirmed",
       "source": "wiki",
-      "days_until": 7
+      "days_until": 6
     }
   ],
   "top_movers": [
@@ -826,7 +826,7 @@
   "scored_items": 6962,
   "sync_status": {
     "ok": true,
-    "last_sync": "2026-04-24T05:29:03.012996+00:00",
+    "last_sync": "2026-04-25T05:06:47.272416+00:00",
     "error": null
   }
 }
