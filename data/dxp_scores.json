@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-13T06:21:14.671274+00:00",
+  "generated_at": "2026-05-14T06:18:54.533899+00:00",
   "next_event": null,
   "all_events": [],
   "top_movers": [
@@ -96,7 +96,7 @@
       "item_name": "Starbloom flower seed",
       "pre_lift_pct": 10.350501857140685,
       "during_lift_pct": 15.73098321871198,
-      "post_lift_pct": -2.613832245123747,
+      "post_lift_pct": -4.014432253819525,
       "events_observed": 4
     },
     {
@@ -112,7 +112,7 @@
       "item_name": "Water talisman",
       "pre_lift_pct": 9.509730201862322,
       "during_lift_pct": 18.34581491251043,
-      "post_lift_pct": 7.836372211957873,
+      "post_lift_pct": 6.13022394180094,
       "events_observed": 5
     },
     {
@@ -144,7 +144,7 @@
       "item_name": "Irit seed",
       "pre_lift_pct": 8.350902754766354,
       "during_lift_pct": 16.33305393453527,
-      "post_lift_pct": 20.192722011721855,
+      "post_lift_pct": 21.57383812618185,
       "events_observed": 5
     },
     {
@@ -192,7 +192,7 @@
       "item_name": "Tuna",
       "pre_lift_pct": -7.640711764375416,
       "during_lift_pct": -10.718546857872298,
-      "post_lift_pct": -10.394590039711375,
+      "post_lift_pct": -9.975121257598722,
       "events_observed": 5
     },
     {
@@ -216,7 +216,7 @@
       "item_name": "Key to the Crossing",
       "pre_lift_pct": -7.187317100327418,
       "during_lift_pct": -13.236155436301676,
-      "post_lift_pct": -16.01466886297877,
+      "post_lift_pct": -16.0807654560754,
       "events_observed": 5
     },
     {
@@ -240,7 +240,7 @@
       "item_name": "Mystic cloth",
       "pre_lift_pct": -7.076711146050255,
       "during_lift_pct": -10.300848654589451,
-      "post_lift_pct": -11.697926585403122,
+      "post_lift_pct": -11.08724724036413,
       "events_observed": 5
     },
     {
@@ -248,7 +248,7 @@
       "item_name": "Fellstalk seed",
       "pre_lift_pct": 6.821192931393011,
       "during_lift_pct": 8.345576752354177,
-      "post_lift_pct": 1.4531984887306892,
+      "post_lift_pct": 1.9505446648721587,
       "events_observed": 5
     },
     {
@@ -272,7 +272,7 @@
       "item_name": "Ghostly essence",
       "pre_lift_pct": -6.775316224888653,
       "during_lift_pct": -5.69670116681261,
-      "post_lift_pct": 3.7527827139674854,
+      "post_lift_pct": 3.7178243192366836,
       "events_observed": 5
     },
     {
@@ -280,7 +280,7 @@
       "item_name": "Manuscript of Amascut",
       "pre_lift_pct": -6.760605656647943,
       "during_lift_pct": -9.813265361692734,
-      "post_lift_pct": -14.94105401357369,
+      "post_lift_pct": -14.47395451905403,
       "events_observed": 5
     },
     {
@@ -296,7 +296,7 @@
       "item_name": "Portable crafter",
       "pre_lift_pct": -6.70044329995405,
       "during_lift_pct": -17.694766299439934,
-      "post_lift_pct": -23.446157584493854,
+      "post_lift_pct": -24.45238128229726,
       "events_observed": 5
     },
     {
@@ -312,7 +312,7 @@
       "item_name": "Eternal magic wood spirit",
       "pre_lift_pct": 6.452406893935494,
       "during_lift_pct": 10.053334513414564,
-      "post_lift_pct": 14.289248707779423,
+      "post_lift_pct": 16.237302288980537,
       "events_observed": 5
     },
     {
@@ -336,7 +336,7 @@
       "item_name": "Molten glass",
       "pre_lift_pct": 6.410219732313137,
       "during_lift_pct": 7.376097558482866,
-      "post_lift_pct": 3.2124907502296636,
+      "post_lift_pct": 2.916681437188468,
       "events_observed": 5
     },
     {
@@ -344,7 +344,7 @@
       "item_name": "Yew seed",
       "pre_lift_pct": -6.3838421618458385,
       "during_lift_pct": -5.02328165526285,
-      "post_lift_pct": -2.9376747311060405,
+      "post_lift_pct": -2.09518284871568,
       "events_observed": 5
     },
     {
@@ -352,7 +352,7 @@
       "item_name": "Vis wax",
       "pre_lift_pct": -6.197917978599054,
       "during_lift_pct": -13.581287926474735,
-      "post_lift_pct": -11.403575198230268,
+      "post_lift_pct": -12.443007229830625,
       "events_observed": 5
     },
     {
@@ -384,7 +384,7 @@
       "item_name": "Unicorn horn",
       "pre_lift_pct": 6.121434388982179,
       "during_lift_pct": 20.019836867391167,
-      "post_lift_pct": 19.054952159997224,
+      "post_lift_pct": 16.870135707744122,
       "events_observed": 5
     },
     {
@@ -392,7 +392,7 @@
       "item_name": "Bones",
       "pre_lift_pct": -6.11806157086744,
       "during_lift_pct": -13.481688480120082,
-      "post_lift_pct": -4.994855897706056,
+      "post_lift_pct": -5.434695048790314,
       "events_observed": 5
     },
     {
@@ -400,7 +400,7 @@
       "item_name": "Oak plank",
       "pre_lift_pct": 6.117143209915857,
       "during_lift_pct": 2.763479730856012,
-      "post_lift_pct": -1.8120044939673108,
+      "post_lift_pct": -1.5148601965842372,
       "events_observed": 5
     },
     {
@@ -408,7 +408,7 @@
       "item_name": "Ectoplasm",
       "pre_lift_pct": -6.114712556031412,
       "during_lift_pct": -9.624915537366642,
-      "post_lift_pct": -17.814166420151793,
+      "post_lift_pct": -17.652506422160517,
       "events_observed": 5
     },
     {
@@ -424,7 +424,7 @@
       "item_name": "Orikalkum bar",
       "pre_lift_pct": -6.067542283645857,
       "during_lift_pct": -10.051778706353614,
-      "post_lift_pct": -13.171058974446224,
+      "post_lift_pct": -12.55188841044694,
       "events_observed": 5
     },
     {
@@ -432,7 +432,7 @@
       "item_name": "Soul rune",
       "pre_lift_pct": 6.064161355039955,
       "during_lift_pct": 23.316620247867334,
-      "post_lift_pct": 31.416429621451343,
+      "post_lift_pct": 31.880757533905122,
       "events_observed": 5
     },
     {
@@ -440,7 +440,7 @@
       "item_name": "Primal stone spirit",
       "pre_lift_pct": 5.963586295180513,
       "during_lift_pct": 7.690020619337551,
-      "post_lift_pct": 6.979522177200185,
+      "post_lift_pct": 7.656294087031513,
       "events_observed": 5
     },
     {
@@ -456,7 +456,7 @@
       "item_name": "Raw rocktail",
       "pre_lift_pct": 5.929888714988624,
       "during_lift_pct": 6.422777758820571,
-      "post_lift_pct": 3.998753183544107,
+      "post_lift_pct": 2.9568536808495613,
       "events_observed": 5
     },
     {
@@ -504,7 +504,7 @@
       "item_name": "Spring",
       "pre_lift_pct": 5.574494479977092,
       "during_lift_pct": 0.606799690627684,
-      "post_lift_pct": 2.522872757368582,
+      "post_lift_pct": 2.5725663301760244,
       "events_observed": 5
     },
     {
@@ -512,7 +512,7 @@
       "item_name": "Potion flask",
       "pre_lift_pct": 5.538530949954558,
       "during_lift_pct": 6.625904372305745,
-      "post_lift_pct": 10.363696424983967,
+      "post_lift_pct": 10.80474249474781,
       "events_observed": 5
     },
     {
@@ -536,7 +536,7 @@
       "item_name": "Elder wood spirit",
       "pre_lift_pct": 5.378007977695173,
       "during_lift_pct": 8.21159759911645,
-      "post_lift_pct": 4.2465500421341025,
+      "post_lift_pct": 5.076050594033621,
       "events_observed": 5
     },
     {
@@ -544,7 +544,7 @@
       "item_name": "Portable fletcher",
       "pre_lift_pct": -5.345959015672844,
       "during_lift_pct": -15.953682599096426,
-      "post_lift_pct": -23.25811335375763,
+      "post_lift_pct": -24.37988066419776,
       "events_observed": 5
     },
     {
@@ -584,7 +584,7 @@
       "item_name": "Willow wood spirit",
       "pre_lift_pct": -5.28765584477993,
       "during_lift_pct": -12.181809268963162,
-      "post_lift_pct": -17.82567065099304,
+      "post_lift_pct": -18.317358022176943,
       "events_observed": 5
     },
     {
@@ -608,7 +608,7 @@
       "item_name": "Gold stone spirit",
       "pre_lift_pct": 5.189603264076594,
       "during_lift_pct": -4.428982611400484,
-      "post_lift_pct": -12.063281065083327,
+      "post_lift_pct": -12.387487058914004,
       "events_observed": 5
     },
     {
@@ -624,7 +624,7 @@
       "item_name": "Thread",
       "pre_lift_pct": -5.082599753595372,
       "during_lift_pct": -0.4593535252888462,
-      "post_lift_pct": -3.1340563181774472,
+      "post_lift_pct": -4.955083491317297,
       "events_observed": 5
     },
     {
@@ -640,7 +640,7 @@
       "item_name": "Hardened dragon bones",
       "pre_lift_pct": 5.07173110398231,
       "during_lift_pct": 11.1515192796841,
-      "post_lift_pct": 8.845579204733543,
+      "post_lift_pct": 8.963332129352812,
       "events_observed": 5
     },
     {
@@ -648,7 +648,7 @@
       "item_name": "Yew wood spirit",
       "pre_lift_pct": -5.055713908019411,
       "during_lift_pct": -0.824028467017093,
-      "post_lift_pct": 0.8619665757256594,
+      "post_lift_pct": 0.22460706512671233,
       "events_observed": 5
     },
     {
@@ -664,7 +664,7 @@
       "item_name": "Torstol seed",
       "pre_lift_pct": 4.957377941188929,
       "during_lift_pct": 6.152304892905483,
-      "post_lift_pct": 7.204898912006838,
+      "post_lift_pct": 7.71050293088164,
       "events_observed": 5
     },
     {
@@ -672,7 +672,7 @@
       "item_name": "Grimy cadantine",
       "pre_lift_pct": -4.947894550270547,
       "during_lift_pct": -5.02316258737402,
-      "post_lift_pct": -8.005076714016246,
+      "post_lift_pct": -7.72423286601671,
       "events_observed": 5
     },
     {
@@ -680,7 +680,7 @@
       "item_name": "Greater ghostly ink",
       "pre_lift_pct": -4.912656627648997,
       "during_lift_pct": 7.034099518728791,
-      "post_lift_pct": 7.724483970008789,
+      "post_lift_pct": 5.64679108052067,
       "events_observed": 5
     },
     {
@@ -696,7 +696,7 @@
       "item_name": "Accursed ashes",
       "pre_lift_pct": 4.88647098416481,
       "during_lift_pct": 5.689165691366127,
-      "post_lift_pct": 13.592610749574531,
+      "post_lift_pct": 13.498070401896072,
       "events_observed": 5
     },
     {
@@ -712,7 +712,7 @@
       "item_name": "Boots of Tumeken's resplendence",
       "pre_lift_pct": 4.874968223092775,
       "during_lift_pct": 10.291931231933765,
-      "post_lift_pct": 17.1058959814777,
+      "post_lift_pct": 15.505033374984668,
       "events_observed": 4
     },
     {
@@ -720,7 +720,7 @@
       "item_name": "Vibrant energy",
       "pre_lift_pct": -4.871726756842958,
       "during_lift_pct": -5.115525983573,
-      "post_lift_pct": -5.291723788448076,
+      "post_lift_pct": -5.402622494980515,
       "events_observed": 5
     },
     {
@@ -744,7 +744,7 @@
       "item_name": "Meat pie",
       "pre_lift_pct": 4.75415242743306,
       "during_lift_pct": 10.278739293885602,
-      "post_lift_pct": 15.373545779861669,
+      "post_lift_pct": 16.830573095419833,
       "events_observed": 5
     },
     {
@@ -752,7 +752,7 @@
       "item_name": "Wyvern bones",
       "pre_lift_pct": 4.742748918110861,
       "during_lift_pct": 21.710940802985817,
-      "post_lift_pct": 17.070940464323286,
+      "post_lift_pct": 15.716295037060108,
       "events_observed": 5
     },
     {
@@ -760,7 +760,7 @@
       "item_name": "Starbloom thread",
       "pre_lift_pct": 4.6644846618757985,
       "during_lift_pct": 11.703847551126845,
-      "post_lift_pct": 17.855408665301354,
+      "post_lift_pct": 19.46261996864927,
       "events_observed": 4
     },
     {
@@ -768,7 +768,7 @@
       "item_name": "Chinchompa residue",
       "pre_lift_pct": -4.63758713029706,
       "during_lift_pct": -12.381346964694076,
-      "post_lift_pct": -13.617619579869796,
+      "post_lift_pct": -14.615225770372495,
       "events_observed": 5
     },
     {
@@ -776,7 +776,7 @@
       "item_name": "Coconut",
       "pre_lift_pct": 4.574835518664795,
       "during_lift_pct": 3.0744843574671066,
-      "post_lift_pct": 5.620352932574433,
+      "post_lift_pct": 6.458009151242698,
       "events_observed": 5
     },
     {
@@ -792,7 +792,7 @@
       "item_name": "Greater necroplasm",
       "pre_lift_pct": -4.518830246016703,
       "during_lift_pct": -5.071377520574641,
-      "post_lift_pct": -6.901155361965355,
+      "post_lift_pct": -5.604830933628514,
       "events_observed": 5
     },
     {
@@ -800,7 +800,7 @@
       "item_name": "Necronium bar",
       "pre_lift_pct": -4.508130364677188,
       "during_lift_pct": -4.960147069304358,
-      "post_lift_pct": -6.6487157403531985,
+      "post_lift_pct": -6.713299001722511,
       "events_observed": 5
     }
   ],
@@ -810,7 +810,7 @@
   "scored_items": 6996,
   "sync_status": {
     "ok": true,
-    "last_sync": "2026-05-13T06:21:09.712342+00:00",
+    "last_sync": "2026-05-14T06:18:50.141852+00:00",
     "error": null
   }
 }
