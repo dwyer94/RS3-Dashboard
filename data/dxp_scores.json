@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-07T07:01:36.416373+00:00",
+  "generated_at": "2026-06-08T07:25:45.894520+00:00",
   "next_event": null,
   "all_events": [],
   "top_movers": [
@@ -810,7 +810,7 @@
   "scored_items": 6996,
   "sync_status": {
     "ok": true,
-    "last_sync": "2026-06-07T07:01:31.507015+00:00",
+    "last_sync": "2026-06-08T07:25:41.089827+00:00",
     "error": null
   }
 }
