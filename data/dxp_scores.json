@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T08:04:21.538792+00:00",
+  "generated_at": "2026-10-21T08:10:11.764835+00:00",
   "next_event": null,
   "all_events": [],
   "top_movers": [
@@ -809,8 +809,8 @@
   "avg_post_lift_pct": -0.1,
   "scored_items": 6996,
   "sync_status": {
-    "ok": true,
-    "last_sync": "2026-10-20T08:04:18.708980+00:00",
-    "error": null
+    "ok": false,
+    "last_sync": "2026-10-19T08:20:23.138020+00:00",
+    "error": "2026-10-21T08:10:09.006676+00:00 \u2014 Wiki HTTP request failed: Server error '502 Bad Gateway' for url 'https://runescape.wiki/api.php?action=parse&page=Double_XP&prop=wikitext&format=json&redirects=1'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502"
   }
 }
