@@ -1,7 +1,23 @@
 {
-  "generated_at": "2026-11-02T10:23:35.308768+00:00",
-  "next_event": null,
-  "all_events": [],
+  "generated_at": "2026-11-03T10:21:13.387909+00:00",
+  "next_event": {
+    "id": 581,
+    "start_date": "2026-11-06",
+    "end_date": "2026-11-16",
+    "status": "confirmed",
+    "source": "wiki",
+    "days_until": 3
+  },
+  "all_events": [
+    {
+      "id": 581,
+      "start_date": "2026-11-06",
+      "end_date": "2026-11-16",
+      "status": "confirmed",
+      "source": "wiki",
+      "days_until": 3
+    }
+  ],
   "top_movers": [
     {
       "item_id": 51806,
@@ -810,7 +826,7 @@
   "scored_items": 6996,
   "sync_status": {
     "ok": true,
-    "last_sync": "2026-11-02T10:23:30.312683+00:00",
+    "last_sync": "2026-11-03T10:21:08.220038+00:00",
     "error": null
   }
 }
