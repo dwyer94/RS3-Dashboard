@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T11:35:55.626768+00:00",
+  "generated_at": "2026-11-24T13:08:59.371477+00:00",
   "next_event": null,
   "all_events": [],
   "top_movers": [
@@ -8,7 +8,7 @@
       "item_name": "Dragonfruit seed",
       "pre_lift_pct": 36.6517987484133,
       "during_lift_pct": 63.225821992449674,
-      "post_lift_pct": 70.01254544569554,
+      "post_lift_pct": 71.2920496378211,
       "events_observed": 6
     },
     {
@@ -16,7 +16,7 @@
       "item_name": "Ring of duelling (8)",
       "pre_lift_pct": 33.5422120243057,
       "during_lift_pct": 60.43891904902528,
-      "post_lift_pct": 82.43114912882548,
+      "post_lift_pct": 81.84912461149096,
       "events_observed": 6
     },
     {
@@ -24,7 +24,7 @@
       "item_name": "Antisanguine (4)",
       "pre_lift_pct": 29.316267129478973,
       "during_lift_pct": 104.79806197346059,
-      "post_lift_pct": 93.86412119897315,
+      "post_lift_pct": 88.87081028311096,
       "events_observed": 2
     },
     {
@@ -32,7 +32,7 @@
       "item_name": "Mithril platelegs",
       "pre_lift_pct": 28.24788344220606,
       "during_lift_pct": 31.255805173051904,
-      "post_lift_pct": 40.732167686465424,
+      "post_lift_pct": 43.019240467223625,
       "events_observed": 6
     },
     {
@@ -40,7 +40,7 @@
       "item_name": "Meat pie",
       "pre_lift_pct": 27.142593973378425,
       "during_lift_pct": 73.53217006943719,
-      "post_lift_pct": 33.67566351228079,
+      "post_lift_pct": 29.863812800160538,
       "events_observed": 6
     },
     {
@@ -48,7 +48,7 @@
       "item_name": "Masterwork sinew",
       "pre_lift_pct": 26.584692354982487,
       "during_lift_pct": 50.42281216719291,
-      "post_lift_pct": 64.22210935553332,
+      "post_lift_pct": 63.744551753659046,
       "events_observed": 2
     },
     {
@@ -56,7 +56,7 @@
       "item_name": "Sanguine spines",
       "pre_lift_pct": -25.82184486355249,
       "during_lift_pct": -17.719069011275753,
-      "post_lift_pct": -3.727030685927492,
+      "post_lift_pct": -0.47888894883351035,
       "events_observed": 2
     },
     {
@@ -64,7 +64,7 @@
       "item_name": "Pot of cream",
       "pre_lift_pct": 24.615149159392153,
       "during_lift_pct": 21.13151339119961,
-      "post_lift_pct": -9.901039599727556,
+      "post_lift_pct": -9.742363962791046,
       "events_observed": 6
     },
     {
@@ -72,7 +72,7 @@
       "item_name": "Irises",
       "pre_lift_pct": 24.224663141772385,
       "during_lift_pct": 145.96623091950914,
-      "post_lift_pct": 125.52364564661144,
+      "post_lift_pct": 123.1226327192827,
       "events_observed": 6
     },
     {
@@ -80,7 +80,7 @@
       "item_name": "Beer",
       "pre_lift_pct": 24.166729272056273,
       "during_lift_pct": 19.55699761088155,
-      "post_lift_pct": 11.096982686460793,
+      "post_lift_pct": 10.857241906179471,
       "events_observed": 6
     },
     {
@@ -88,7 +88,7 @@
       "item_name": "Silver spines",
       "pre_lift_pct": -24.085610552350225,
       "during_lift_pct": -27.50035456595504,
-      "post_lift_pct": 12.715399730573692,
+      "post_lift_pct": 17.1931186014721,
       "events_observed": 2
     },
     {
@@ -96,7 +96,7 @@
       "item_name": "Bowl",
       "pre_lift_pct": 23.862609574371323,
       "during_lift_pct": 11.587895772273615,
-      "post_lift_pct": 21.93352073271535,
+      "post_lift_pct": 21.735667746758278,
       "events_observed": 6
     },
     {
@@ -104,7 +104,7 @@
       "item_name": "Wendlewick ale",
       "pre_lift_pct": 23.400307898788146,
       "during_lift_pct": 46.12358455791394,
-      "post_lift_pct": 61.53431364645457,
+      "post_lift_pct": 60.831672822233195,
       "events_observed": 2
     },
     {
@@ -112,7 +112,7 @@
       "item_name": "Resonant anima of Wen (tradeable)",
       "pre_lift_pct": 22.466407960913454,
       "during_lift_pct": 2.9327340316351296,
-      "post_lift_pct": -11.236271895612555,
+      "post_lift_pct": -9.06392686612467,
       "events_observed": 6
     },
     {
@@ -136,7 +136,7 @@
       "item_name": "Garden pie",
       "pre_lift_pct": 20.982124784335618,
       "during_lift_pct": 73.19627556186309,
-      "post_lift_pct": 91.58117445302973,
+      "post_lift_pct": 89.78134206496203,
       "events_observed": 6
     },
     {
@@ -152,7 +152,7 @@
       "item_name": "Rope",
       "pre_lift_pct": -18.3474429618595,
       "during_lift_pct": -16.01478120447306,
-      "post_lift_pct": -3.4532841973783173,
+      "post_lift_pct": -2.7140834581775777,
       "events_observed": 6
     },
     {
@@ -176,7 +176,7 @@
       "item_name": "Opal bolt tips",
       "pre_lift_pct": 18.11439854654128,
       "during_lift_pct": -1.3704086945428477,
-      "post_lift_pct": -11.083593534491905,
+      "post_lift_pct": -11.29776839655409,
       "events_observed": 6
     },
     {
@@ -192,7 +192,7 @@
       "item_name": "Guarana seed",
       "pre_lift_pct": 17.907469202843615,
       "during_lift_pct": 17.249086809061172,
-      "post_lift_pct": 45.97101806077488,
+      "post_lift_pct": 48.73981620529557,
       "events_observed": 6
     },
     {
@@ -216,7 +216,7 @@
       "item_name": "Grimy harralander",
       "pre_lift_pct": 17.040693057229777,
       "during_lift_pct": 11.289481008499502,
-      "post_lift_pct": -10.263939305128106,
+      "post_lift_pct": -10.42766039908176,
       "events_observed": 6
     },
     {
@@ -232,7 +232,7 @@
       "item_name": "Varrock teleport (item)",
       "pre_lift_pct": 16.89243769924564,
       "during_lift_pct": 24.317941628416566,
-      "post_lift_pct": 24.99717243777751,
+      "post_lift_pct": 23.848409518108056,
       "events_observed": 6
     },
     {
@@ -240,7 +240,7 @@
       "item_name": "Mimic kill token",
       "pre_lift_pct": 16.82142383849741,
       "during_lift_pct": 0.2683213615575374,
-      "post_lift_pct": 1.0187603585481781,
+      "post_lift_pct": 1.3232236123694212,
       "events_observed": 6
     },
     {
@@ -264,7 +264,7 @@
       "item_name": "Dinosaur claws",
       "pre_lift_pct": 16.533828494968088,
       "during_lift_pct": 33.64993996336484,
-      "post_lift_pct": 1.3334165143725503,
+      "post_lift_pct": 0.3976371170546913,
       "events_observed": 6
     },
     {
@@ -272,7 +272,7 @@
       "item_name": "Broken memento",
       "pre_lift_pct": 16.507138656740405,
       "during_lift_pct": 10.008970598145634,
-      "post_lift_pct": -3.759173708725676,
+      "post_lift_pct": -2.536547360471187,
       "events_observed": 6
     },
     {
@@ -280,7 +280,7 @@
       "item_name": "Pie shell",
       "pre_lift_pct": 16.25096644696488,
       "during_lift_pct": 22.818201922787136,
-      "post_lift_pct": 24.52370127049008,
+      "post_lift_pct": 25.142034418943712,
       "events_observed": 6
     },
     {
@@ -288,7 +288,7 @@
       "item_name": "Adamant bolts",
       "pre_lift_pct": 16.00413419981821,
       "during_lift_pct": 34.14216387215001,
-      "post_lift_pct": 40.302635236335874,
+      "post_lift_pct": 39.08612201982266,
       "events_observed": 6
     },
     {
@@ -304,7 +304,7 @@
       "item_name": "Mithril nails",
       "pre_lift_pct": -15.591293633065511,
       "during_lift_pct": 8.428202524421353,
-      "post_lift_pct": 14.65422084534086,
+      "post_lift_pct": 13.387019578139594,
       "events_observed": 6
     },
     {
@@ -320,7 +320,7 @@
       "item_name": "Cooked eeligator",
       "pre_lift_pct": 15.409593373434038,
       "during_lift_pct": 28.079983451530058,
-      "post_lift_pct": 3.665890541113827,
+      "post_lift_pct": 0.9010877763110627,
       "events_observed": 6
     },
     {
@@ -328,7 +328,7 @@
       "item_name": "Iron full helm",
       "pre_lift_pct": -15.235415389956293,
       "during_lift_pct": -15.178168457983004,
-      "post_lift_pct": 5.291169780600882,
+      "post_lift_pct": 5.704387585123035,
       "events_observed": 6
     },
     {
@@ -352,7 +352,7 @@
       "item_name": "Poison ivy berries",
       "pre_lift_pct": 15.119189289434322,
       "during_lift_pct": 10.77482936247152,
-      "post_lift_pct": 11.452027208604424,
+      "post_lift_pct": 11.915883375378362,
       "events_observed": 6
     },
     {
@@ -360,7 +360,7 @@
       "item_name": "Brown dye",
       "pre_lift_pct": 15.046169991027861,
       "during_lift_pct": 45.5476968045253,
-      "post_lift_pct": 74.50826866085895,
+      "post_lift_pct": 83.79046106692927,
       "events_observed": 6
     },
     {
@@ -368,7 +368,7 @@
       "item_name": "Sapphire bolt tips",
       "pre_lift_pct": 15.007639971188977,
       "during_lift_pct": -12.054629674961397,
-      "post_lift_pct": -8.988159442217542,
+      "post_lift_pct": -8.09366443007547,
       "events_observed": 6
     },
     {
@@ -376,7 +376,7 @@
       "item_name": "Sunchoke seed",
       "pre_lift_pct": -14.987346762532965,
       "during_lift_pct": -13.500763367003492,
-      "post_lift_pct": 5.6878725657389255,
+      "post_lift_pct": 6.234210836628096,
       "events_observed": 6
     },
     {
@@ -384,7 +384,7 @@
       "item_name": "Sugilite moth jar",
       "pre_lift_pct": 14.751006036217303,
       "during_lift_pct": 64.65040241448693,
-      "post_lift_pct": 114.54979879275653,
+      "post_lift_pct": 131.45120724346077,
       "events_observed": 2
     },
     {
@@ -400,7 +400,7 @@
       "item_name": "Morchella mushroom spore",
       "pre_lift_pct": 14.622300329823547,
       "during_lift_pct": 8.542716887028805,
-      "post_lift_pct": -13.167127281898471,
+      "post_lift_pct": -11.863720264205737,
       "events_observed": 6
     },
     {
@@ -416,7 +416,7 @@
       "item_name": "Vial",
       "pre_lift_pct": -14.069921762229454,
       "during_lift_pct": 4.22820422820423,
-      "post_lift_pct": -12.19962099082978,
+      "post_lift_pct": -4.596413387622178,
       "events_observed": 6
     },
     {
@@ -424,7 +424,7 @@
       "item_name": "Chaos talisman",
       "pre_lift_pct": 13.963559981140195,
       "during_lift_pct": 14.719646040984264,
-      "post_lift_pct": 12.071701624546815,
+      "post_lift_pct": 12.79937057307466,
       "events_observed": 6
     },
     {
@@ -448,7 +448,7 @@
       "item_name": "Ruby ring",
       "pre_lift_pct": 13.788640002837653,
       "during_lift_pct": 7.173228331611567,
-      "post_lift_pct": 29.462213462592782,
+      "post_lift_pct": 29.56320483493141,
       "events_observed": 6
     },
     {
@@ -456,7 +456,7 @@
       "item_name": "Body talisman",
       "pre_lift_pct": 13.701402685819303,
       "during_lift_pct": 42.54977213528346,
-      "post_lift_pct": 32.63776445407078,
+      "post_lift_pct": 27.92689322839318,
       "events_observed": 6
     },
     {
@@ -480,7 +480,7 @@
       "item_name": "Powerburst of vitality (4)",
       "pre_lift_pct": 13.524232928504265,
       "during_lift_pct": -6.635740173881307,
-      "post_lift_pct": -5.135456166076291,
+      "post_lift_pct": -4.5523739031401025,
       "events_observed": 6
     },
     {
@@ -488,7 +488,7 @@
       "item_name": "Enlightened amulet (new)",
       "pre_lift_pct": 13.507822423124997,
       "during_lift_pct": 9.798923704396964,
-      "post_lift_pct": 8.48118922172893,
+      "post_lift_pct": 10.869228083931926,
       "events_observed": 6
     },
     {
@@ -504,7 +504,7 @@
       "item_name": "Bronze platelegs",
       "pre_lift_pct": 13.2576446156914,
       "during_lift_pct": 38.73535145984431,
-      "post_lift_pct": 37.380657523898556,
+      "post_lift_pct": 42.44004102194376,
       "events_observed": 6
     },
     {
@@ -512,7 +512,7 @@
       "item_name": "Mystic gloves",
       "pre_lift_pct": -13.253255925043023,
       "during_lift_pct": -4.106014858309335,
-      "post_lift_pct": -4.62647277649883,
+      "post_lift_pct": -4.619931445036363,
       "events_observed": 6
     },
     {
@@ -520,7 +520,7 @@
       "item_name": "Traveller's necklace (new)",
       "pre_lift_pct": -13.187179613342096,
       "during_lift_pct": -12.863161411840558,
-      "post_lift_pct": -10.837078213919254,
+      "post_lift_pct": -9.817547508707525,
       "events_observed": 6
     },
     {
@@ -552,7 +552,7 @@
       "item_name": "Bull (unchecked)",
       "pre_lift_pct": 13.049570531846717,
       "during_lift_pct": 2.7059792208396285,
-      "post_lift_pct": -0.8885279450995496,
+      "post_lift_pct": 2.1836587493226505,
       "events_observed": 6
     },
     {
@@ -560,7 +560,7 @@
       "item_name": "Rune bolts",
       "pre_lift_pct": 13.00684591049047,
       "during_lift_pct": -12.896779175623342,
-      "post_lift_pct": -24.67875379394163,
+      "post_lift_pct": -24.093891670617968,
       "events_observed": 6
     },
     {
@@ -568,7 +568,7 @@
       "item_name": "Augmentation dissolver",
       "pre_lift_pct": -12.967184314851783,
       "during_lift_pct": -13.69068032580508,
-      "post_lift_pct": -12.355587348001066,
+      "post_lift_pct": -12.326376341841653,
       "events_observed": 6
     },
     {
@@ -576,7 +576,7 @@
       "item_name": "Bronze pickaxe",
       "pre_lift_pct": 12.966148069262466,
       "during_lift_pct": -0.40498988316096113,
-      "post_lift_pct": -1.7754521042581928,
+      "post_lift_pct": -3.4565633331081154,
       "events_observed": 6
     },
     {
@@ -592,7 +592,7 @@
       "item_name": "Leather boots",
       "pre_lift_pct": -12.847509503339191,
       "during_lift_pct": -14.17382600056402,
-      "post_lift_pct": -8.70301673772265,
+      "post_lift_pct": -8.7369596288084,
       "events_observed": 6
     },
     {
@@ -608,7 +608,7 @@
       "item_name": "Grimy marrentill",
       "pre_lift_pct": -12.626090381913425,
       "during_lift_pct": -18.218680077050088,
-      "post_lift_pct": -22.93901547183751,
+      "post_lift_pct": -23.400126445077863,
       "events_observed": 6
     },
     {
@@ -624,7 +624,7 @@
       "item_name": "Adrenaline crystal",
       "pre_lift_pct": 12.597037531901083,
       "during_lift_pct": 9.239251237927137,
-      "post_lift_pct": 8.45090861382347,
+      "post_lift_pct": 8.371815997417423,
       "events_observed": 6
     },
     {
@@ -632,7 +632,7 @@
       "item_name": "Jug of wine",
       "pre_lift_pct": -12.395114255648465,
       "during_lift_pct": -4.469954978616596,
-      "post_lift_pct": -8.170561167042683,
+      "post_lift_pct": -5.608610779005338,
       "events_observed": 6
     },
     {
@@ -648,7 +648,7 @@
       "item_name": "Teak frame",
       "pre_lift_pct": -12.219879728808644,
       "during_lift_pct": -21.81802340655352,
-      "post_lift_pct": -24.333695562275235,
+      "post_lift_pct": -24.02553283800513,
       "events_observed": 6
     },
     {
@@ -656,7 +656,7 @@
       "item_name": "Clean marrentill",
       "pre_lift_pct": -12.186648554638705,
       "during_lift_pct": -13.09843332751273,
-      "post_lift_pct": -12.791247595629901,
+      "post_lift_pct": -12.727130595462302,
       "events_observed": 6
     },
     {
@@ -672,7 +672,7 @@
       "item_name": "Antisanguine flask (6)",
       "pre_lift_pct": -12.154374089221077,
       "during_lift_pct": -5.991162506463593,
-      "post_lift_pct": 8.922107836224322,
+      "post_lift_pct": 11.398956423635594,
       "events_observed": 2
     },
     {
@@ -680,7 +680,7 @@
       "item_name": "Coal stone spirit",
       "pre_lift_pct": 12.097003788781663,
       "during_lift_pct": 9.524879219239958,
-      "post_lift_pct": 8.710249833182,
+      "post_lift_pct": 7.0206481435803125,
       "events_observed": 6
     },
     {
@@ -696,7 +696,7 @@
       "item_name": "Irit potion (unfinished)",
       "pre_lift_pct": 11.913883401133994,
       "during_lift_pct": 20.647508321075897,
-      "post_lift_pct": 12.642420017600385,
+      "post_lift_pct": 10.765494929315384,
       "events_observed": 6
     },
     {
@@ -728,7 +728,7 @@
       "item_name": "Emerald ring",
       "pre_lift_pct": 11.640571431151455,
       "during_lift_pct": 19.925741158598072,
-      "post_lift_pct": 15.877472594970905,
+      "post_lift_pct": 19.077292150601075,
       "events_observed": 6
     },
     {
@@ -736,7 +736,7 @@
       "item_name": "Earth talisman",
       "pre_lift_pct": -11.627748210241352,
       "during_lift_pct": -4.8092432293194864,
-      "post_lift_pct": -12.196991019536688,
+      "post_lift_pct": -12.79527620798581,
       "events_observed": 6
     },
     {
@@ -760,7 +760,7 @@
       "item_name": "Spider venom",
       "pre_lift_pct": -11.533316460100215,
       "during_lift_pct": -10.776280771785764,
-      "post_lift_pct": -10.575472047173815,
+      "post_lift_pct": -10.995580212718584,
       "events_observed": 6
     },
     {
@@ -768,7 +768,7 @@
       "item_name": "Amulet of magic",
       "pre_lift_pct": 11.518847449126655,
       "during_lift_pct": 11.883261984323921,
-      "post_lift_pct": -6.953741059722729,
+      "post_lift_pct": -6.167934687324179,
       "events_observed": 6
     },
     {
@@ -776,7 +776,7 @@
       "item_name": "Cave nightshade seed",
       "pre_lift_pct": 11.516577222369344,
       "during_lift_pct": 1.9231567251121526,
-      "post_lift_pct": 25.667900977706893,
+      "post_lift_pct": 26.7752953355453,
       "events_observed": 6
     },
     {
@@ -784,7 +784,7 @@
       "item_name": "Masterwork elasticated leather",
       "pre_lift_pct": 11.40621650775523,
       "during_lift_pct": 34.432282306185336,
-      "post_lift_pct": 57.70517809285552,
+      "post_lift_pct": 68.13336681490209,
       "events_observed": 2
     },
     {
@@ -800,17 +800,17 @@
       "item_name": "Mycelial webbing",
       "pre_lift_pct": 11.370991282655865,
       "during_lift_pct": 2.2267404307723373,
-      "post_lift_pct": 12.33116585763851,
+      "post_lift_pct": 12.632780704707905,
       "events_observed": 6
     }
   ],
   "avg_pre_lift_pct": 0.06,
   "avg_during_lift_pct": 0.33,
-  "avg_post_lift_pct": 0.45,
+  "avg_post_lift_pct": 0.46,
   "scored_items": 7174,
   "sync_status": {
     "ok": true,
-    "last_sync": "2026-11-23T11:35:51.577518+00:00",
+    "last_sync": "2026-11-24T13:08:53.868454+00:00",
     "error": null
   }
 }
